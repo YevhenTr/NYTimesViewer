@@ -22,6 +22,8 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     private var tabbarViewController: UITabBarController?  //  root view controller
      
     private var mostEmailedCoordinator: MostEmailedCoordinator?
+    private var mostSharedCoordinator: MostSharedCoordinator?
+    private var mostViewedCoordinator: MostViewedCoordinator?
     private var favoritesCoordinator: FavoritesCoordinator?
     
     // MARK: - Init and Deinit
@@ -51,10 +53,14 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     
     private func prepareAppCoordinators() -> [UIViewController] {
         let mostEmailedCoordinator = self.createMostEmailedCoordinator()
+        let mostSharedCoordinator = self.createMostSharedCoordinator()
+        let mostViewedCoordinator = self.createMostViewedCoordinator()
         let favoritesCoordinator = self.createFavoritesCoordinator()
 
         return [
             mostEmailedCoordinator.navigationController,
+            mostSharedCoordinator.navigationController,
+            mostViewedCoordinator.navigationController,
             favoritesCoordinator.navigationController
         ]
     }
@@ -70,6 +76,34 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     }
 
     private func mostEmailedEventHandler(_ event: MostEmailedCoordinator.Event) {
+
+    }
+    
+    // MARK: - MostSharedCoordinator
+
+    private func createMostSharedCoordinator() -> MostSharedCoordinator {
+        let mostSharedCoordinator = MostSharedCoordinator(eventHandler: self.mostSharedEventHandler)
+
+        self.mostSharedCoordinator = mostSharedCoordinator
+
+        return mostSharedCoordinator
+    }
+
+    private func mostSharedEventHandler(_ event: MostSharedCoordinator.Event) {
+
+    }
+    
+    // MARK: - MostViewedCoordinator
+
+    private func createMostViewedCoordinator() -> MostViewedCoordinator {
+        let mostViewedCoordinator = MostViewedCoordinator(eventHandler: self.mostViewedEventHandler)
+
+        self.mostViewedCoordinator = mostViewedCoordinator
+
+        return mostViewedCoordinator
+    }
+
+    private func mostViewedEventHandler(_ event: MostViewedCoordinator.Event) {
 
     }
     
