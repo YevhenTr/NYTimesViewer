@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -88,7 +88,6 @@
 				D3E0BD027372FF891ABFC27E /* Pods-NYTimesViewer.debug.xcconfig */,
 				597FE635496824FCE4FD2FBC /* Pods-NYTimesViewer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -161,12 +160,12 @@
 		621A96BF24ED4E5000FAC9F4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				621A96EE24ED550E00FAC9F4 /* FavoritesFlow */,
-				621A96ED24ED550300FAC9F4 /* MostViewedFlow */,
-				621A96EC24ED54F700FAC9F4 /* MostSharedFlow */,
-				621A96EB24ED536F00FAC9F4 /* MostEmailedFlow */,
-				621A96E824ED524200FAC9F4 /* AppFlow */,
 				621A96E524ED50AB00FAC9F4 /* RootFlow */,
+				621A96E824ED524200FAC9F4 /* AppFlow */,
+				621A96EB24ED536F00FAC9F4 /* MostEmailedFlow */,
+				621A96EC24ED54F700FAC9F4 /* MostSharedFlow */,
+				621A96ED24ED550300FAC9F4 /* MostViewedFlow */,
+				621A96EE24ED550E00FAC9F4 /* FavoritesFlow */,
 			);
 			path = UI;
 			sourceTree = "<group>";

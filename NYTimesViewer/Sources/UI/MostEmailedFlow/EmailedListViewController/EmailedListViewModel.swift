@@ -18,8 +18,8 @@ class EmailedListViewModel: BaseViewModel<EmailedListEvent> {
     
     // MARK: - Init and Deinit
     
-    // MARK: - Public Methods
+    // MARK: - Public
 
-    // MARK: - Private Methods
+    // MARK: - Private
 }
 

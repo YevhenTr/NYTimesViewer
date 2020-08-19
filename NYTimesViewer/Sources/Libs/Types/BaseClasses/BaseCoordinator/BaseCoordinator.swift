@@ -33,23 +33,17 @@ public class BaseCoordinator<Event> {
     init(eventHandler: @escaping Handler<Event>, presentationStyle: CoordinatorPresentationStyle = .slide) {
         self.eventHandler = eventHandler
         self.presentationStyle = presentationStyle
-        
-//        self.start()
     }
     
     deinit {
         debugPrint("Coordinator deinit: \(type(of: self))")
     }
     
-    // MARK: - Public API
+    // MARK: - Public
     
     func rootViewController() -> UIViewController {
         fatalError("should be overriden")
     }
-    
-//    private func start() {
-//        self.push(controller: self.rootViewController())
-//    }
     
     func show<Event>(coordinator: BaseCoordinator<Event>, animated: Bool = true){
         switch coordinator.presentationStyle {

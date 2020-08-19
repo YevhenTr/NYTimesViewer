@@ -38,7 +38,6 @@ public final class RootCoordinator: BaseCoordinator<RootCoordinator.Event> {
     
     public func start() {
         self.show(coordinator: self.createAppCoordinator(), animated: false)
-
     }
     
     // MARK: - Private
@@ -51,11 +50,10 @@ public final class RootCoordinator: BaseCoordinator<RootCoordinator.Event> {
         return controller
     }
     
-    
-    
+    // MARK: - AppCoordinator
     
     private func createAppCoordinator() -> AppCoordinator {
-        let appCoordinator = AppCoordinator(services: self.prepareServices(), eventHandler: self.appEventHandler)
+        let appCoordinator = AppCoordinator(eventHandler: self.appEventHandler)
         
         self.appCoordinator = appCoordinator
         
@@ -64,9 +62,5 @@ public final class RootCoordinator: BaseCoordinator<RootCoordinator.Event> {
     
     private func appEventHandler(_ event: AppCoordinator.Event) {
         
-    }
-    
-    private func prepareServices() -> ServiceContainer {
-        return ServiceContainer()
     }
 }

@@ -26,10 +26,9 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     
     // MARK: - Init and Deinit
     
-    init(services: ServiceContainer, eventHandler: @escaping Handler<AppCoordinator.Event>) {
+    init(eventHandler: @escaping Handler<AppCoordinator.Event>) {
         super.init(eventHandler: eventHandler)
     }
-    
     
     // MARK: - Public
      
@@ -38,6 +37,8 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     }
     
     // MARK: - Private
+    
+    // MARK: - TabbarView Controller
     
     private func createTabbarViewController() -> UIViewController {
         let controller = UITabBarController()
@@ -85,8 +86,4 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     private func favoritesEventHandler(_ event: FavoritesCoordinator.Event) {
 
     }
-}
-
-class ServiceContainer {
-    
 }
