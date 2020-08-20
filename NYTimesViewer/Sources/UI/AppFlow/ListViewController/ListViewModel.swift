@@ -8,13 +8,29 @@
 
 import Foundation
 
+import RxRelay
+
 class ListViewModel<Event>: BaseViewModel<Event> {
 
     // MARK: - Properties
     
+    public let articles = BehaviorRelay<[ArticleModel]>(value: [])
+    
     // MARK: - Init and Deinit
     
     // MARK: - Public
+    
+    open func updateData() {
+        
+    }
+    
+    public func handle(_ error: Error) {
+        debugPrint(error)
+    }
+    
+    public func handle(_ response: ArticlesResponseModel) {
+        self.articles.accept(response.results)
+    }
 
     // MARK: - Private
 }

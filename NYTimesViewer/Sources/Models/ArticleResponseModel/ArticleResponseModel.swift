@@ -12,7 +12,8 @@ struct ArticlesResponseModel: Codable {
     let results: [ArticleModel]
 }
 
-struct ArticleModel: Codable {
+struct ArticleModel: Codable, Equatable {
+    
     let title: String
     let preview: String
     let url: String
@@ -28,6 +29,12 @@ struct ArticleModel: Codable {
     enum CodingKeys: String, CodingKey {
         case title, url, media
         case preview = "abstract"
+    }
+    
+    // MARK: - Equatable
+    
+    static func == (lhs: ArticleModel, rhs: ArticleModel) -> Bool {
+        return lhs.url == rhs.url
     }
 }
 

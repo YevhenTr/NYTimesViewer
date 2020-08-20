@@ -8,6 +8,11 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+import SnapKit
+
 // WARNING
 // do not use storyboard for setup UI
 // all elements should be setup programmatically
@@ -36,6 +41,10 @@ class ListView<Event, ViewModel: ListViewModel<Event>>: BaseView<ViewModel> {
     override public func fill(with viewModel: ViewModel) {
         super.fill(with: viewModel)
         
+        viewModel.articles
+            .observeOn(MainScheduler.asyncInstance)
+            .distinctUntilChanged()
+            .bind { model in debugPrint(model.count) }
     }
         
     public func configure() {
