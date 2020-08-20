@@ -9,7 +9,7 @@
 import Foundation
 
 enum EmailedListEvent {
-
+    case open(ArticleModel)
 }
 
 class EmailedListViewModel: ListViewModel<EmailedListEvent> {
@@ -31,6 +31,12 @@ class EmailedListViewModel: ListViewModel<EmailedListEvent> {
                 self?.handle(error)
             }
         }
+    }
+    
+    public func onSelect(indexPath: IndexPath) {
+        guard let article = self.articles.value.object(at: indexPath.row) else { return }
+
+        self.eventHandler(.open(article))
     }
 
     // MARK: - Private

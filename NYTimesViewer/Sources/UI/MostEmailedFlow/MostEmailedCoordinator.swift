@@ -52,6 +52,9 @@ public final class MostEmailedCoordinator: BaseCoordinator<MostEmailedCoordinato
     }
     
     private func emailedListEventHandler(_ event: EmailedListEvent) {
-
+        switch event {
+        case .open(let article):
+            debugPrint(article.title)
+        }
     }
 }
