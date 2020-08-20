@@ -43,6 +43,7 @@
 		621A972D24ED769100FAC9F4 /* ViewedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A972924ED769100FAC9F4 /* ViewedListView.swift */; };
 		621A972E24ED769100FAC9F4 /* ViewedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621A972A24ED769100FAC9F4 /* ViewedListViewModel.swift */; };
 		621A972F24ED769100FAC9F4 /* ViewedListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621A972B24ED769100FAC9F4 /* ViewedListViewController.xib */; };
+		62910F2924EEA51A00C6ECE0 /* DisposeBagOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62910F2824EEA51A00C6ECE0 /* DisposeBagOwner.swift */; };
 		62A6FC1524EDAD3C005CD79D /* NYTimesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC1424EDAD3C005CD79D /* NYTimesAPI.swift */; };
 		62A6FC1724EDADD2005CD79D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC1624EDADD2005CD79D /* NetworkError.swift */; };
 		62A6FC1924EDADE7005CD79D /* ParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC1824EDADE7005CD79D /* ParserError.swift */; };
@@ -108,6 +109,7 @@
 		621A972924ED769100FAC9F4 /* ViewedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedListView.swift; sourceTree = "<group>"; };
 		621A972A24ED769100FAC9F4 /* ViewedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedListViewModel.swift; sourceTree = "<group>"; };
 		621A972B24ED769100FAC9F4 /* ViewedListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewedListViewController.xib; sourceTree = "<group>"; };
+		62910F2824EEA51A00C6ECE0 /* DisposeBagOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposeBagOwner.swift; sourceTree = "<group>"; };
 		62A6FC1424EDAD3C005CD79D /* NYTimesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTimesAPI.swift; sourceTree = "<group>"; };
 		62A6FC1624EDADD2005CD79D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		62A6FC1824EDADE7005CD79D /* ParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserError.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				62A6FC2624EDBFE7005CD79D /* NetworkAPI.swift */,
+				62910F2824EEA51A00C6ECE0 /* DisposeBagOwner.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				62A6FC2524EDBFA5005CD79D /* Array+Extensions.swift in Sources */,
 				62A6FC4424EE5EC7005CD79D /* CustomTextView.swift in Sources */,
 				62A6FC2124EDAF2B005CD79D /* Networking+MostPopular.swift in Sources */,
+				62910F2924EEA51A00C6ECE0 /* DisposeBagOwner.swift in Sources */,
 				621A96F724ED55DB00FAC9F4 /* EmailedListView.swift in Sources */,
 				621A96E124ED4ED300FAC9F4 /* AppTextConstants.swift in Sources */,
 				621A96F024ED557600FAC9F4 /* MostEmailedCoordinator.swift in Sources */,

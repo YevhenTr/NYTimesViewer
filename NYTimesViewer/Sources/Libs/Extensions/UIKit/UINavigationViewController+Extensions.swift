@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIViewController {
+    
     func modalPresentation(_ isModal: Bool = true, style: UIModalPresentationStyle = .fullScreen) {
         self.isModalInPresentation = isModal
         self.modalPresentationStyle = style
