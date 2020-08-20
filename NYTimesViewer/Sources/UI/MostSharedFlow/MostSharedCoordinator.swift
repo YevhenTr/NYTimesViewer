@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class MostSharedCoordinator: BaseCoordinator<MostSharedCoordinator.Event> {
+public final class MostSharedCoordinator: MainCoordinator<MostSharedCoordinator.Event> {
 
     // MARK: - Subtypes
     
@@ -18,20 +18,8 @@ public final class MostSharedCoordinator: BaseCoordinator<MostSharedCoordinator.
     
     // MARK: - Properties
     
-    private let networking: Networking
-    private let storage: ArticleStorageService
-    
     private var sharedListViewController: UIViewController?  //  root view controller
-     
-    // MARK: - Init and Deinit
-    
-    init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<MostSharedCoordinator.Event>) {
-        self.networking = serviceContainer.networking
-        self.storage = serviceContainer.articleStorage
-        
-        super.init(eventHandler: eventHandler)
-    }
-    
+
     // MARK: - Public
      
     override func rootViewController() -> UIViewController {
@@ -57,24 +45,6 @@ public final class MostSharedCoordinator: BaseCoordinator<MostSharedCoordinator.
         case .open(let article):
             self.push(controller: self.createArticleViewController(article))
             self.navigationController.isNavigationBarHidden = false
-        }
-    }
-    
-    // MARK: - ArticleViewController
-    
-    private func createArticleViewController(_ article: ArticleModel) -> ArticleViewController {
-        let viewModel = ArticleViewModel(article: article, storage: self.storage, eventHandler: self.articleEventHandler)
-        let controller = ArticleViewController(viewModel: viewModel)
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController.isNavigationBarHidden = false
-        
-        return controller
-    }
-    
-    private func articleEventHandler(_ event: ArticleEvent) {
-        switch event {
-        case .back:
-            self.navigationController.isNavigationBarHidden = true
         }
     }
 }

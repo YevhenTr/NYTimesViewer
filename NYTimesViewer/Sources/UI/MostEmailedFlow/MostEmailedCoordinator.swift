@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class MostEmailedCoordinator: BaseCoordinator<MostEmailedCoordinator.Event> {
+public final class MostEmailedCoordinator: MainCoordinator<MostEmailedCoordinator.Event> {
 
     // MARK: - Subtypes
     
@@ -18,19 +18,7 @@ public final class MostEmailedCoordinator: BaseCoordinator<MostEmailedCoordinato
     
     // MARK: - Properties
     
-    private let networking: Networking
-    private let storage: ArticleStorageService
-    
     private var emailedListViewController: UIViewController?  //  root view controller
-     
-    // MARK: - Init and Deinit
-    
-    init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<MostEmailedCoordinator.Event>) {
-        self.networking = serviceContainer.networking
-        self.storage = serviceContainer.articleStorage
-        
-        super.init(eventHandler: eventHandler)
-    }
     
     // MARK: - Public
      
@@ -57,24 +45,6 @@ public final class MostEmailedCoordinator: BaseCoordinator<MostEmailedCoordinato
         case .open(let article):
             self.push(controller: self.createArticleViewController(article))
             self.navigationController.isNavigationBarHidden = false
-        }
-    }
-    
-    // MARK: - ArticleViewController
-    
-    private func createArticleViewController(_ article: ArticleModel) -> ArticleViewController {
-        let viewModel = ArticleViewModel(article: article, storage: self.storage, eventHandler: self.articleEventHandler)
-        let controller = ArticleViewController(viewModel: viewModel)
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController.isNavigationBarHidden = false
-        
-        return controller
-    }
-    
-    private func articleEventHandler(_ event: ArticleEvent) {
-        switch event {
-        case .back:
-            self.navigationController.isNavigationBarHidden = true
         }
     }
 }
