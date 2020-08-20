@@ -8,7 +8,8 @@
 
 import UIKit
 
-import SnapKit
+import RxSwift
+import RxCocoa
 
 class EmailedListView: ListView<EmailedListEvent, EmailedListViewModel> {
 
@@ -29,10 +30,13 @@ class EmailedListView: ListView<EmailedListEvent, EmailedListViewModel> {
     override public func fill(with viewModel: EmailedListViewModel) {
         super.fill(with: viewModel)
         
-        let emptyArticle = ArticleModel(title: "", preview: "", url: "", media: [])
-        self.tableAdapter?.sections = [
-            Section(cell: ArticleCell.self, models: [emptyArticle, emptyArticle, emptyArticle])
-        ]
+        viewModel.articles
+            .observeOn(MainScheduler.asyncInstance)
+            .distinctUntilChanged()
+            .bind { [weak self] models in
+                self?.tableAdapter?.sections = [Section(cell: ArticleCell.self, models: models)]
+            }
+            .disposed(by: self)
     }
     
     // MARK: - Private
