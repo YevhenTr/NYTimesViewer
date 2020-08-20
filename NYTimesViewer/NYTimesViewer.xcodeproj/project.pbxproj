@@ -69,6 +69,8 @@
 		62A6FC5524EE6E54005CD79D /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A6FC5124EE6E54005CD79D /* ListViewController.xib */; };
 		62A6FC6324EE961A005CD79D /* ArticleStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC6024EE961A005CD79D /* ArticleStorageService.swift */; };
 		62A6FC6424EE961A005CD79D /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC6224EE961A005CD79D /* ServiceContainer.swift */; };
+		62C408B924EEF56B0082108C /* BaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C408B824EEF56B0082108C /* BaseStorageService.swift */; };
+		62C408BB24EEF5C80082108C /* CoreDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C408BA24EEF5C80082108C /* CoreDataStorable.swift */; };
 		6FC57BE02A69800F886A2AAB /* Pods_NYTimesViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1117414678C432A01CDC32 /* Pods_NYTimesViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,8 @@
 		62A6FC5124EE6E54005CD79D /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		62A6FC6024EE961A005CD79D /* ArticleStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleStorageService.swift; sourceTree = "<group>"; };
 		62A6FC6224EE961A005CD79D /* ServiceContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
+		62C408B824EEF56B0082108C /* BaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStorageService.swift; sourceTree = "<group>"; };
+		62C408BA24EEF5C80082108C /* CoreDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorable.swift; sourceTree = "<group>"; };
 		D3E0BD027372FF891ABFC27E /* Pods-NYTimesViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesViewer.debug.xcconfig"; path = "Target Support Files/Pods-NYTimesViewer/Pods-NYTimesViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -575,6 +579,8 @@
 			isa = PBXGroup;
 			children = (
 				62A6FC6024EE961A005CD79D /* ArticleStorageService.swift */,
+				62C408B824EEF56B0082108C /* BaseStorageService.swift */,
+				62C408BA24EEF5C80082108C /* CoreDataStorable.swift */,
 			);
 			path = StorageService;
 			sourceTree = "<group>";
@@ -749,11 +755,13 @@
 				621A96F724ED55DB00FAC9F4 /* EmailedListView.swift in Sources */,
 				621A96E124ED4ED300FAC9F4 /* AppTextConstants.swift in Sources */,
 				621A96F024ED557600FAC9F4 /* MostEmailedCoordinator.swift in Sources */,
+				62C408B924EEF56B0082108C /* BaseStorageService.swift in Sources */,
 				621A96DD24ED4EAC00FAC9F4 /* BaseViewModel.swift in Sources */,
 				62A6FC2724EDBFE7005CD79D /* NetworkAPI.swift in Sources */,
 				62A6FC1D24EDAE35005CD79D /* ArticleResponseModel.swift in Sources */,
 				62A6FC3C24EE571A005CD79D /* BaseCell.swift in Sources */,
 				621A96DC24ED4EAC00FAC9F4 /* BaseViewController.swift in Sources */,
+				62C408BB24EEF5C80082108C /* CoreDataStorable.swift in Sources */,
 				621A972C24ED769100FAC9F4 /* ViewedListViewController.swift in Sources */,
 				62910F3024EEC36C00C6ECE0 /* ArticleViewController.swift in Sources */,
 				62A6FC4124EE59CB005CD79D /* ArticleCell.swift in Sources */,

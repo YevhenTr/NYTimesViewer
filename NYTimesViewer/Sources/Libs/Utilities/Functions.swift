@@ -17,3 +17,7 @@ public typealias EmptyAction = () -> ()
 public func toString(_ cls: AnyClass) -> String {
     return String(describing: cls)
 }
+
+func libraryFolderPath() -> String {
+    return FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?.path ?? ""
+}
