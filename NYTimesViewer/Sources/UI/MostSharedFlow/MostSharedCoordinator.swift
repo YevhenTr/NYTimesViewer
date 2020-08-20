@@ -53,6 +53,28 @@ public final class MostSharedCoordinator: BaseCoordinator<MostSharedCoordinator.
     }
     
     private func sharedListEventHandler(_ event: SharedListEvent) {
-
+        switch event {
+        case .open(let article):
+            self.push(controller: self.createArticleViewController(article))
+            self.navigationController.isNavigationBarHidden = false
+        }
+    }
+    
+    // MARK: - ArticleViewController
+    
+    private func createArticleViewController(_ article: ArticleModel) -> ArticleViewController {
+        let viewModel = ArticleViewModel(article: article, storage: self.storage, eventHandler: self.articleEventHandler)
+        let controller = ArticleViewController(viewModel: viewModel)
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController.isNavigationBarHidden = false
+        
+        return controller
+    }
+    
+    private func articleEventHandler(_ event: ArticleEvent) {
+        switch event {
+        case .back:
+            self.navigationController.isNavigationBarHidden = true
+        }
     }
 }
