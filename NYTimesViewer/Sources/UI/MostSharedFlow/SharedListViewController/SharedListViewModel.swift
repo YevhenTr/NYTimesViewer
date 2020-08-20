@@ -9,10 +9,10 @@
 import Foundation
 
 enum SharedListEvent {
-
+    case open(ArticleModel)
 }
 
-class SharedListViewModel: BaseViewModel<SharedListEvent> {
+class SharedListViewModel: ListViewModel<SharedListEvent> {
 
     // MARK: - Properties
     
@@ -20,6 +20,23 @@ class SharedListViewModel: BaseViewModel<SharedListEvent> {
     
     // MARK: - Public
 
+    override func updateData() {
+        self.networking?.getMostSharedArticles() { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.handle(response)
+            case .failure(let error):
+                self?.handle(error)
+            }
+        }
+    }
+    
+    override func onSelect(indexPath: IndexPath) {
+        guard let article = self.articles.value.object(at: indexPath.row) else { return }
+
+        self.eventHandler(.open(article))
+    }
+    
     // MARK: - Private
 }
 

@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SharedListViewController: BaseViewController<SharedListView, SharedListViewModel> {
+class SharedListViewController: ListViewController<SharedListEvent, SharedListViewModel, SharedListView> {
 
 }

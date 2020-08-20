@@ -18,8 +18,20 @@ public final class MostSharedCoordinator: BaseCoordinator<MostSharedCoordinator.
     
     // MARK: - Properties
     
+    private let networking: Networking
+    private let storage: ArticleStorageService
+    
     private var sharedListViewController: UIViewController?  //  root view controller
      
+    // MARK: - Init and Deinit
+    
+    init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<MostSharedCoordinator.Event>) {
+        self.networking = serviceContainer.networking
+        self.storage = serviceContainer.articleStorage
+        
+        super.init(eventHandler: eventHandler)
+    }
+    
     // MARK: - Public
      
     override func rootViewController() -> UIViewController {
@@ -31,7 +43,7 @@ public final class MostSharedCoordinator: BaseCoordinator<MostSharedCoordinator.
     // MARK: - SharedListViewController
     
     private func createSharedListViewController() -> SharedListViewController {
-        let viewModel = SharedListViewModel(eventHandler: self.sharedListEventHandler)
+        let viewModel = SharedListViewModel(networking: self.networking, eventHandler: self.sharedListEventHandler)
         let controller = SharedListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Shared", image: UIImage(named: "shareIcon"), tag: 2)
 

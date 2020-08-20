@@ -470,10 +470,10 @@
 		621A971224ED756300FAC9F4 /* SharedListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				621A971324ED756300FAC9F4 /* SharedListView.swift */,
-				621A971424ED756300FAC9F4 /* SharedListViewController.xib */,
 				621A971524ED756300FAC9F4 /* SharedListViewController.swift */,
+				621A971324ED756300FAC9F4 /* SharedListView.swift */,
 				621A971624ED756300FAC9F4 /* SharedListViewModel.swift */,
+				621A971424ED756300FAC9F4 /* SharedListViewController.xib */,
 			);
 			path = SharedListViewController;
 			sourceTree = "<group>";

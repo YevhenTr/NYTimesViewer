@@ -8,7 +8,10 @@
 
 import UIKit
 
-class SharedListView: BaseView<SharedListViewModel> {
+import RxSwift
+import RxCocoa
+
+class SharedListView: ListView<SharedListEvent, SharedListViewModel> {
 
     // MARK: - Subtypes
 
@@ -27,11 +30,18 @@ class SharedListView: BaseView<SharedListViewModel> {
     override public func fill(with viewModel: SharedListViewModel) {
         super.fill(with: viewModel)
         
+        viewModel.articles
+        .observeOn(MainScheduler.asyncInstance)
+        .distinctUntilChanged()
+        .bind { [weak self] models in
+            debugPrint(models)
+            self?.tableAdapter?.sections = [Section(cell: ArticleCell.self, models: models)]
+        }
+        .disposed(by: self)
     }
     
-    // MARK: - Private
-    
-    private func configure() {
-        
+    override public func configure() {
+        super.configure()
+
     }
 }

@@ -86,7 +86,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     // MARK: - MostSharedCoordinator
 
     private func createMostSharedCoordinator() -> MostSharedCoordinator {
-        let mostSharedCoordinator = MostSharedCoordinator(eventHandler: self.mostSharedEventHandler)
+        let mostSharedCoordinator = MostSharedCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.mostSharedEventHandler)
 
         self.mostSharedCoordinator = mostSharedCoordinator
 
