@@ -1,18 +1,14 @@
 //
-//  EmailedListViewModel.swift
+//  ListViewModel.swift
 //  NYTimesViewer
 //
-//  Created by Yevhen Triukhan on 19.08.2020.
+//  Created by Yevhen Triukhan on 20.08.2020.
 //  Copyright © 2020 Yevhen Triukhan. All rights reserved.
 //
 
 import Foundation
 
-enum EmailedListEvent {
-
-}
-
-class EmailedListViewModel: ListViewModel<EmailedListEvent> {
+class ListViewModel<Event>: BaseViewModel<Event> {
 
     // MARK: - Properties
     

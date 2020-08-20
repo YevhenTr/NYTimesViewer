@@ -58,6 +58,10 @@
 		62A6FC4124EE59CB005CD79D /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC3F24EE59CB005CD79D /* ArticleCell.swift */; };
 		62A6FC4224EE59CB005CD79D /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A6FC4024EE59CB005CD79D /* ArticleCell.xib */; };
 		62A6FC4424EE5EC7005CD79D /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC4324EE5EC7005CD79D /* CustomTextView.swift */; };
+		62A6FC5224EE6E54005CD79D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC4E24EE6E54005CD79D /* ListViewController.swift */; };
+		62A6FC5324EE6E54005CD79D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC4F24EE6E54005CD79D /* ListView.swift */; };
+		62A6FC5424EE6E54005CD79D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC5024EE6E54005CD79D /* ListViewModel.swift */; };
+		62A6FC5524EE6E54005CD79D /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A6FC5124EE6E54005CD79D /* ListViewController.xib */; };
 		6FC57BE02A69800F886A2AAB /* Pods_NYTimesViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1117414678C432A01CDC32 /* Pods_NYTimesViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +121,10 @@
 		62A6FC3F24EE59CB005CD79D /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		62A6FC4024EE59CB005CD79D /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 		62A6FC4324EE5EC7005CD79D /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		62A6FC4E24EE6E54005CD79D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		62A6FC4F24EE6E54005CD79D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		62A6FC5024EE6E54005CD79D /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		62A6FC5124EE6E54005CD79D /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		D3E0BD027372FF891ABFC27E /* Pods-NYTimesViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesViewer.debug.xcconfig"; path = "Target Support Files/Pods-NYTimesViewer/Pods-NYTimesViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -367,6 +375,7 @@
 		621A96E824ED524200FAC9F4 /* AppFlow */ = {
 			isa = PBXGroup;
 			children = (
+				62A6FC4D24EE6E3F005CD79D /* ListViewController */,
 				621A96E924ED527900FAC9F4 /* AppCoordinator.swift */,
 			);
 			path = AppFlow;
@@ -522,6 +531,17 @@
 			path = CustomTextView;
 			sourceTree = "<group>";
 		};
+		62A6FC4D24EE6E3F005CD79D /* ListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				62A6FC4E24EE6E54005CD79D /* ListViewController.swift */,
+				62A6FC4F24EE6E54005CD79D /* ListView.swift */,
+				62A6FC5024EE6E54005CD79D /* ListViewModel.swift */,
+				62A6FC5124EE6E54005CD79D /* ListViewController.xib */,
+			);
+			path = ListViewController;
+			sourceTree = "<group>";
+		};
 		F996403A5100796888A34071 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +615,7 @@
 				621A96B124ED4C3E00FAC9F4 /* Assets.xcassets in Resources */,
 				621A96F924ED55DB00FAC9F4 /* EmailedListViewController.xib in Resources */,
 				62A6FC4224EE59CB005CD79D /* ArticleCell.xib in Resources */,
+				62A6FC5524EE6E54005CD79D /* ListViewController.xib in Resources */,
 				621A970524ED56D300FAC9F4 /* FavoritesListViewController.xib in Resources */,
 				621A96AF24ED4C3C00FAC9F4 /* Main.storyboard in Resources */,
 				621A971924ED756300FAC9F4 /* SharedListViewController.xib in Resources */,
@@ -660,6 +681,7 @@
 				621A96E424ED504300FAC9F4 /* Networking.swift in Sources */,
 				621A971A24ED756300FAC9F4 /* SharedListViewController.swift in Sources */,
 				621A972D24ED769100FAC9F4 /* ViewedListView.swift in Sources */,
+				62A6FC5324EE6E54005CD79D /* ListView.swift in Sources */,
 				621A970224ED56D300FAC9F4 /* FavoritesListViewController.swift in Sources */,
 				621A96EA24ED527900FAC9F4 /* AppCoordinator.swift in Sources */,
 				62A6FC3824EE5699005CD79D /* TableAdapter.swift in Sources */,
@@ -686,7 +708,9 @@
 				62A6FC4124EE59CB005CD79D /* ArticleCell.swift in Sources */,
 				621A96A824ED4C3C00FAC9F4 /* AppDelegate.swift in Sources */,
 				621A971B24ED756300FAC9F4 /* SharedListViewModel.swift in Sources */,
+				62A6FC5424EE6E54005CD79D /* ListViewModel.swift in Sources */,
 				621A96F624ED55DB00FAC9F4 /* EmailedListViewController.swift in Sources */,
+				62A6FC5224EE6E54005CD79D /* ListViewController.swift in Sources */,
 				62A6FC3A24EE56F3005CD79D /* Section.swift in Sources */,
 				62A6FC1524EDAD3C005CD79D /* NYTimesAPI.swift in Sources */,
 				621A96D824ED4EAC00FAC9F4 /* Functions.swift in Sources */,

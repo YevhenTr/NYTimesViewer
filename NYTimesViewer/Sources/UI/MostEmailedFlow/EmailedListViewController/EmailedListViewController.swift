@@ -8,6 +8,6 @@
 
 import UIKit
 
-class EmailedListViewController: BaseViewController<EmailedListView, EmailedListViewModel> {
+class EmailedListViewController: ListViewController<EmailedListEvent, EmailedListViewModel, EmailedListView> {
 
 }
