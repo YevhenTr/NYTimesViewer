@@ -14,3 +14,6 @@ public typealias Action<T> = (T) -> ()
 
 public typealias EmptyAction = () -> ()
 
+public func toString(_ cls: AnyClass) -> String {
+    return String(describing: cls)
+}
