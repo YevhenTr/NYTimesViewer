@@ -100,7 +100,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     // MARK: - MostViewedCoordinator
 
     private func createMostViewedCoordinator() -> MostViewedCoordinator {
-        let mostViewedCoordinator = MostViewedCoordinator(eventHandler: self.mostViewedEventHandler)
+        let mostViewedCoordinator = MostViewedCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.mostViewedEventHandler)
 
         self.mostViewedCoordinator = mostViewedCoordinator
 

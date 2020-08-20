@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ViewedListViewController: BaseViewController<ViewedListView, ViewedListViewModel> {
+class ViewedListViewController: ListViewController<ViewedListEvent, ViewedListViewModel, ViewedListView> {
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewedListView: BaseView<ViewedListViewModel> {
+class ViewedListView: ListView<ViewedListEvent, ViewedListViewModel> {
 
     // MARK: - Subtypes
 
@@ -29,9 +29,8 @@ class ViewedListView: BaseView<ViewedListViewModel> {
         
     }
     
-    // MARK: - Private
-    
-    private func configure() {
-        
+    override public func configure() {
+        super.configure()
+
     }
 }

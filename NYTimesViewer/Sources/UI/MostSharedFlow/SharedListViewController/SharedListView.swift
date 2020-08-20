@@ -8,9 +8,6 @@
 
 import UIKit
 
-import RxSwift
-import RxCocoa
-
 class SharedListView: ListView<SharedListEvent, SharedListViewModel> {
 
     // MARK: - Subtypes

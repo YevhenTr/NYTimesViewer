@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class MostViewedCoordinator: BaseCoordinator<MostViewedCoordinator.Event> {
+public final class MostViewedCoordinator: MainCoordinator<MostViewedCoordinator.Event> {
 
     // MARK: - Subtypes
     
@@ -31,7 +31,7 @@ public final class MostViewedCoordinator: BaseCoordinator<MostViewedCoordinator.
     // MARK: - ViewedListViewController
     
     private func createViewedListViewController() -> ViewedListViewController {
-        let viewModel = ViewedListViewModel(eventHandler: self.viewedListEventHandler)
+        let viewModel = ViewedListViewModel(networking: self.networking, eventHandler: self.viewedListEventHandler)
         let controller = ViewedListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Viewed", image: UIImage(named: "likeIcon"), tag: 3)
 
@@ -41,6 +41,10 @@ public final class MostViewedCoordinator: BaseCoordinator<MostViewedCoordinator.
     }
     
     private func viewedListEventHandler(_ event: ViewedListEvent) {
-
+        switch event {
+        case .open(let article):
+            self.push(controller: self.createArticleViewController(article))
+            self.navigationController.isNavigationBarHidden = false
+        }
     }
 }
