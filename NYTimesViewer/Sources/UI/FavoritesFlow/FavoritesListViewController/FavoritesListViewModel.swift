@@ -30,7 +30,7 @@ class FavoritesListViewModel: ListViewModel<FavoritesListEvent> {
 
     override func updateData() {
         if let articles = self.storage.readAllObjects() {
-            self.articles.accept(articles)
+            self.handle(articles)
         } else {
             self.handle(StorageError.invalidFetch)
         }

@@ -32,8 +32,8 @@ class ListViewModel<Event>: BaseViewModel<Event> {
         debugPrint(error)
     }
     
-    public func handle(_ response: ArticlesResponseModel) {
-        self.articles.accept(response.results)
+    public func handle(_ articles: [ArticleModel]) {
+        self.articles.accept(articles)
     }
 
     // MARK: - Private

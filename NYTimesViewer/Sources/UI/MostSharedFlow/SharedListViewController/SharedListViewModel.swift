@@ -24,7 +24,7 @@ class SharedListViewModel: ListViewModel<SharedListEvent> {
         self.networking?.getMostSharedArticles() { [weak self] result in
             switch result {
             case .success(let response):
-                self?.handle(response)
+                self?.handle(response.results)
             case .failure(let error):
                 self?.handle(error)
             }
