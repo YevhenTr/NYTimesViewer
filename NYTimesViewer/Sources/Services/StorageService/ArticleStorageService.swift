@@ -10,4 +10,13 @@ import Foundation
 
 final class ArticleStorageService: BaseStorageService<ArticleModel> {
     
+    // MARK: - Public
+    
+    public func readAllArticles(completion: @escaping Handler<Result<ArticlesResponseModel, Error>>) {
+        if let articles = self.readAllObjects() {
+            completion(.success(ArticlesResponseModel(results: articles)))
+        } else {
+            completion(.failure(StorageError.invalidFetch))
+        }
+    }
 }
