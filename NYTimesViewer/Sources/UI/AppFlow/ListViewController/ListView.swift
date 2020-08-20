@@ -49,6 +49,14 @@ class ListView<Event, ViewModel: ListViewModel<Event>>: BaseView<ViewModel> {
                 break
             }
         }
+        
+        viewModel.articles
+            .observeOn(MainScheduler.asyncInstance)
+            .distinctUntilChanged()
+            .bind { [weak self] models in
+                self?.tableAdapter?.sections = [Section(cell: ArticleCell.self, models: models)]
+            }
+            .disposed(by: self)
     }
         
     public func configure() {

@@ -30,14 +30,6 @@ class SharedListView: ListView<SharedListEvent, SharedListViewModel> {
     override public func fill(with viewModel: SharedListViewModel) {
         super.fill(with: viewModel)
         
-        viewModel.articles
-        .observeOn(MainScheduler.asyncInstance)
-        .distinctUntilChanged()
-        .bind { [weak self] models in
-            debugPrint(models)
-            self?.tableAdapter?.sections = [Section(cell: ArticleCell.self, models: models)]
-        }
-        .disposed(by: self)
     }
     
     override public func configure() {
