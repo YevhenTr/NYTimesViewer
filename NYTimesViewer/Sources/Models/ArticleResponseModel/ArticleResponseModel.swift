@@ -13,11 +13,13 @@ struct ArticlesResponseModel: Codable {
 }
 
 struct ArticleModel: Codable, Equatable {
-    
+    let id: Int
     let title: String
     let preview: String
     let url: String
     let media: [MediaModel]
+    let publishedAt: String
+    let byLine: String
     
     var imageURL: String? {
         return self.media.object(at: 0)?
@@ -27,8 +29,10 @@ struct ArticleModel: Codable, Equatable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case title, url, media
+        case id, title, url, media
         case preview = "abstract"
+        case publishedAt = "published_date"
+        case byLine = "byline"
     }
     
     // MARK: - Equatable

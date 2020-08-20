@@ -22,7 +22,12 @@ final class ArticleCell: BaseCell<ArticleModel, EmptyCellEvent> {
     
     @IBOutlet var articleImageView: UIImageView?
     @IBOutlet var articleTitleTextView: CustomTextView?
+    @IBOutlet var articleDateLabel: UILabel?
+    @IBOutlet var articleAuthorLabel: UILabel?
     @IBOutlet var ArticlePreviewTextView: CustomTextView?
+    
+    private var downloadTask: Kingfisher.DownloadTask?
+    private let placeholder = UIImage(named: "nytimesLogoImage")
     
     // MARK: - View Lifecycle
     
@@ -33,6 +38,10 @@ final class ArticleCell: BaseCell<ArticleModel, EmptyCellEvent> {
         backgroundLayer?.cornerRadius = 5
         backgroundLayer?.borderColor = UIColor.lightGray.cgColor
         backgroundLayer?.borderWidth = 1
+        
+        let imageLayer = self.articleImageView?.layer
+        imageLayer?.cornerRadius = 5
+        imageLayer?.masksToBounds = true
     }
     
     override func prepareForReuse() {
@@ -40,14 +49,24 @@ final class ArticleCell: BaseCell<ArticleModel, EmptyCellEvent> {
         
         self.articleImageView?.image = nil
         self.articleTitleTextView?.text = nil
+        self.articleDateLabel?.text = nil
+        self.articleAuthorLabel?.text = nil
         self.ArticlePreviewTextView?.text = nil
+        self.downloadTask?.cancel()
     }
     
     // MARK: - Public
 
     override func fill(with model: ArticleModel) {
-        self.articleImageView?.image = nil
+        
+        if let imageURL = model.imageURL.flatMap(URL.init(string:)) {
+            self.downloadTask = self.articleImageView?.kf
+                .setImage(with: imageURL, placeholder: self.placeholder)
+        }
+        
         self.articleTitleTextView?.text = model.title
+        self.articleDateLabel?.text = model.publishedAt
+        self.articleAuthorLabel?.text = model.byLine
         self.ArticlePreviewTextView?.text = model.preview
     }
 }
