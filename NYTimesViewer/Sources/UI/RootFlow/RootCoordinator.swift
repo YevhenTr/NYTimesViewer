@@ -53,7 +53,8 @@ public final class RootCoordinator: BaseCoordinator<RootCoordinator.Event> {
     // MARK: - AppCoordinator
     
     private func createAppCoordinator() -> AppCoordinator {
-        let appCoordinator = AppCoordinator(eventHandler: self.appEventHandler)
+        let serviceContainer = ServiceContainer()
+        let appCoordinator = AppCoordinator(serviceContainer: serviceContainer, eventHandler: self.appEventHandler)
         
         self.appCoordinator = appCoordinator
         

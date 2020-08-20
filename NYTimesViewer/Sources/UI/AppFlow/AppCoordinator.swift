@@ -19,6 +19,8 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     
     // MARK: - Properties
     
+    private let serviceContainer: ServiceContainer
+    
     private var tabbarViewController: UITabBarController?  //  root view controller
      
     private var mostEmailedCoordinator: MostEmailedCoordinator?
@@ -28,7 +30,9 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     
     // MARK: - Init and Deinit
     
-    init(eventHandler: @escaping Handler<AppCoordinator.Event>) {
+    init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<AppCoordinator.Event>) {
+        self.serviceContainer = serviceContainer
+        
         super.init(eventHandler: eventHandler)
     }
     
@@ -68,7 +72,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     // MARK: - MostEmailedCoordinator
 
     private func createMostEmailedCoordinator() -> MostEmailedCoordinator {
-        let mostEmailedCoordinator = MostEmailedCoordinator(eventHandler: self.mostEmailedEventHandler)
+        let mostEmailedCoordinator = MostEmailedCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.mostEmailedEventHandler)
         
         self.mostEmailedCoordinator = mostEmailedCoordinator
         

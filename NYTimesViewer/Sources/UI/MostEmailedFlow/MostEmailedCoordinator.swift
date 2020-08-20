@@ -18,8 +18,19 @@ public final class MostEmailedCoordinator: BaseCoordinator<MostEmailedCoordinato
     
     // MARK: - Properties
     
+    private let networking: Networking
+
     private var emailedListViewController: UIViewController?  //  root view controller
      
+    
+    // MARK: - Init and Deinit
+    
+    init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<MostEmailedCoordinator.Event>) {
+        self.networking = serviceContainer.networking
+        
+        super.init(eventHandler: eventHandler)
+    }
+    
     // MARK: - Public
      
     override func rootViewController() -> UIViewController {
@@ -31,7 +42,7 @@ public final class MostEmailedCoordinator: BaseCoordinator<MostEmailedCoordinato
     // MARK: - EmailedListViewController
     
     private func createEmailedListViewController() -> EmailedListViewController {
-        let viewModel = EmailedListViewModel(eventHandler: self.emailedListEventHandler)
+        let viewModel = EmailedListViewModel(networking: self.networking, eventHandler: self.emailedListEventHandler)
         let controller = EmailedListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Emailed", image: UIImage(named: "emailIcon"), tag: 1)
 

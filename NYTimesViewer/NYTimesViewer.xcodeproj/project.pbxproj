@@ -62,6 +62,8 @@
 		62A6FC5324EE6E54005CD79D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC4F24EE6E54005CD79D /* ListView.swift */; };
 		62A6FC5424EE6E54005CD79D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC5024EE6E54005CD79D /* ListViewModel.swift */; };
 		62A6FC5524EE6E54005CD79D /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A6FC5124EE6E54005CD79D /* ListViewController.xib */; };
+		62A6FC6324EE961A005CD79D /* ArticleStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC6024EE961A005CD79D /* ArticleStorageService.swift */; };
+		62A6FC6424EE961A005CD79D /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC6224EE961A005CD79D /* ServiceContainer.swift */; };
 		6FC57BE02A69800F886A2AAB /* Pods_NYTimesViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1117414678C432A01CDC32 /* Pods_NYTimesViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +127,8 @@
 		62A6FC4F24EE6E54005CD79D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		62A6FC5024EE6E54005CD79D /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		62A6FC5124EE6E54005CD79D /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		62A6FC6024EE961A005CD79D /* ArticleStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleStorageService.swift; sourceTree = "<group>"; };
+		62A6FC6224EE961A005CD79D /* ServiceContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
 		D3E0BD027372FF891ABFC27E /* Pods-NYTimesViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesViewer.debug.xcconfig"; path = "Target Support Files/Pods-NYTimesViewer/Pods-NYTimesViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +207,8 @@
 		621A96BD24ED4E4100FAC9F4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				62A6FC6124EE961A005CD79D /* ServiceContainer */,
+				62A6FC5F24EE961A005CD79D /* StorageService */,
 				621A96E224ED501900FAC9F4 /* Networking */,
 			);
 			path = Services;
@@ -542,6 +548,22 @@
 			path = ListViewController;
 			sourceTree = "<group>";
 		};
+		62A6FC5F24EE961A005CD79D /* StorageService */ = {
+			isa = PBXGroup;
+			children = (
+				62A6FC6024EE961A005CD79D /* ArticleStorageService.swift */,
+			);
+			path = StorageService;
+			sourceTree = "<group>";
+		};
+		62A6FC6124EE961A005CD79D /* ServiceContainer */ = {
+			isa = PBXGroup;
+			children = (
+				62A6FC6224EE961A005CD79D /* ServiceContainer.swift */,
+			);
+			path = ServiceContainer;
+			sourceTree = "<group>";
+		};
 		F996403A5100796888A34071 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,12 +707,14 @@
 				621A970224ED56D300FAC9F4 /* FavoritesListViewController.swift in Sources */,
 				621A96EA24ED527900FAC9F4 /* AppCoordinator.swift in Sources */,
 				62A6FC3824EE5699005CD79D /* TableAdapter.swift in Sources */,
+				62A6FC6324EE961A005CD79D /* ArticleStorageService.swift in Sources */,
 				621A96DF24ED4EAC00FAC9F4 /* ContainerViewController.swift in Sources */,
 				621A96D924ED4EAC00FAC9F4 /* UINavigationViewController+Extensions.swift in Sources */,
 				621A96E724ED50BA00FAC9F4 /* RootCoordinator.swift in Sources */,
 				62A6FC3E24EE5789005CD79D /* UITableView+Extensions.swift in Sources */,
 				621A96DB24ED4EAC00FAC9F4 /* BaseView.swift in Sources */,
 				621A96DE24ED4EAC00FAC9F4 /* BaseCoordinator.swift in Sources */,
+				62A6FC6424EE961A005CD79D /* ServiceContainer.swift in Sources */,
 				621A971E24ED759700FAC9F4 /* MostViewedCoordinator.swift in Sources */,
 				621A970424ED56D300FAC9F4 /* FavoritesListViewModel.swift in Sources */,
 				62A6FC2524EDBFA5005CD79D /* Array+Extensions.swift in Sources */,
