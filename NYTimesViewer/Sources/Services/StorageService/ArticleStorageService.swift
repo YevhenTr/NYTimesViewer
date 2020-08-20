@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class ArticleStorageService {
+final class ArticleStorageService: BaseStorageService<ArticleModel> {
     
 }

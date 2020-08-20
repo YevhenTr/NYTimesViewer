@@ -45,9 +45,11 @@ class BaseStorageService<Value: CoreDataStorable> {
         return self.readObject(id: fileID) == nil ? false : true
     }
 
-    func save(object: Value) {
+    @discardableResult
+    func save(object: Value) -> Bool {
         let _ = object.coreDataModel(with: self.context)
-        self.saveContext()
+        
+        return self.saveContext()
     }
     
     func readObject(id: Int) -> Value? {
@@ -79,15 +81,24 @@ class BaseStorageService<Value: CoreDataStorable> {
         */
     }
     
-    func deleteObject(id: Int) {
+    @discardableResult
+    func deleteObject(id: Int) -> Bool {
         let request = self.requestToFindObjects(with: id)
-
+        var isDeleted = false
+        
         (try? self.context.fetch(request))?
             .first
             .map {
                 self.context.delete($0)
-                try? self.context.save()
+                do {
+                    isDeleted = true
+                    try self.context.save()
+                } catch {
+                    isDeleted = false
+                }
             }
+        
+        return isDeleted
     }
     
     func requestToFindObjects(with id: Int) -> NSFetchRequest<CoreDataObject> {
@@ -98,12 +109,21 @@ class BaseStorageService<Value: CoreDataStorable> {
         return request
     }
 
-    func saveContext() {
+    @discardableResult
+    func saveContext() -> Bool {
         let context = persistentContainer.viewContext
-
+        var isSaved = false
+        
         if context.hasChanges {
-            try? context.save()
+            do {
+                isSaved = true
+                try context.save()
+            } catch {
+                isSaved = false
+            }
         }
+        
+        return isSaved
     }
 
     func deleteAllRecords() {

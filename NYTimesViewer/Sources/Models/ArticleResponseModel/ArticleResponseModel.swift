@@ -12,41 +12,17 @@ struct ArticlesResponseModel: Codable {
     let results: [ArticleModel]
 }
 
-struct ArticleModel: Codable, Equatable {
-    let id: Int
-    let title: String
-    let preview: String
-    let url: String
-    let media: [MediaModel]
-    let publishedAt: String
-    let byLine: String
-    
-    var imageURL: String? {
-        return self.media.object(at: 0)?
-            .metadata
-            .first(where: { $0.format == "Standard Thumbnail" })?
-            .url
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case id, title, url, media
-        case preview = "abstract"
-        case publishedAt = "published_date"
-        case byLine = "byline"
-    }
-    
-    // MARK: - Equatable
-    
-    static func == (lhs: ArticleModel, rhs: ArticleModel) -> Bool {
-        return lhs.url == rhs.url
-    }
-}
-
 struct MediaModel: Codable {
     let metadata: [ImageModel]
     
     enum CodingKeys: String, CodingKey {
         case metadata = "media-metadata"
+    }
+    
+    static func create(with url: String) -> MediaModel {
+        let imageModel = ImageModel(url: url, format: "Standard Thumbnail")
+        
+        return MediaModel(metadata: [imageModel])
     }
 }
 

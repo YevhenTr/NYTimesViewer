@@ -71,6 +71,8 @@
 		62A6FC6424EE961A005CD79D /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A6FC6224EE961A005CD79D /* ServiceContainer.swift */; };
 		62C408B924EEF56B0082108C /* BaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C408B824EEF56B0082108C /* BaseStorageService.swift */; };
 		62C408BB24EEF5C80082108C /* CoreDataStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C408BA24EEF5C80082108C /* CoreDataStorable.swift */; };
+		62C408BD24EEF8010082108C /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C408BC24EEF8010082108C /* ArticleModel.swift */; };
+		62C408C324EEF8A00082108C /* ArticleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62C408C124EEF8A00082108C /* ArticleModel.xcdatamodeld */; };
 		6FC57BE02A69800F886A2AAB /* Pods_NYTimesViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1117414678C432A01CDC32 /* Pods_NYTimesViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +145,8 @@
 		62A6FC6224EE961A005CD79D /* ServiceContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
 		62C408B824EEF56B0082108C /* BaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStorageService.swift; sourceTree = "<group>"; };
 		62C408BA24EEF5C80082108C /* CoreDataStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorable.swift; sourceTree = "<group>"; };
+		62C408BC24EEF8010082108C /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		62C408C224EEF8A00082108C /* ArticleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ArticleModel.xcdatamodel; sourceTree = "<group>"; };
 		D3E0BD027372FF891ABFC27E /* Pods-NYTimesViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesViewer.debug.xcconfig"; path = "Target Support Files/Pods-NYTimesViewer/Pods-NYTimesViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				621A96B024ED4C3E00FAC9F4 /* Assets.xcassets */,
+				62C408C124EEF8A00082108C /* ArticleModel.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 			children = (
 				62A6FC2624EDBFE7005CD79D /* NetworkAPI.swift */,
 				62910F2824EEA51A00C6ECE0 /* DisposeBagOwner.swift */,
+				62C408BA24EEF5C80082108C /* CoreDataStorable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				62A6FC1C24EDAE35005CD79D /* ArticleResponseModel.swift */,
+				62C408BC24EEF8010082108C /* ArticleModel.swift */,
 			);
 			path = ArticleResponseModel;
 			sourceTree = "<group>";
@@ -580,7 +587,6 @@
 			children = (
 				62A6FC6024EE961A005CD79D /* ArticleStorageService.swift */,
 				62C408B824EEF56B0082108C /* BaseStorageService.swift */,
-				62C408BA24EEF5C80082108C /* CoreDataStorable.swift */,
 			);
 			path = StorageService;
 			sourceTree = "<group>";
@@ -734,6 +740,7 @@
 				621A971A24ED756300FAC9F4 /* SharedListViewController.swift in Sources */,
 				621A972D24ED769100FAC9F4 /* ViewedListView.swift in Sources */,
 				62A6FC5324EE6E54005CD79D /* ListView.swift in Sources */,
+				62C408BD24EEF8010082108C /* ArticleModel.swift in Sources */,
 				621A970224ED56D300FAC9F4 /* FavoritesListViewController.swift in Sources */,
 				621A96EA24ED527900FAC9F4 /* AppCoordinator.swift in Sources */,
 				62A6FC3824EE5699005CD79D /* TableAdapter.swift in Sources */,
@@ -752,6 +759,7 @@
 				62A6FC4424EE5EC7005CD79D /* CustomTextView.swift in Sources */,
 				62A6FC2124EDAF2B005CD79D /* Networking+MostPopular.swift in Sources */,
 				62910F2924EEA51A00C6ECE0 /* DisposeBagOwner.swift in Sources */,
+				62C408C324EEF8A00082108C /* ArticleModel.xcdatamodeld in Sources */,
 				621A96F724ED55DB00FAC9F4 /* EmailedListView.swift in Sources */,
 				621A96E124ED4ED300FAC9F4 /* AppTextConstants.swift in Sources */,
 				621A96F024ED557600FAC9F4 /* MostEmailedCoordinator.swift in Sources */,
@@ -978,6 +986,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		62C408C124EEF8A00082108C /* ArticleModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				62C408C224EEF8A00082108C /* ArticleModel.xcdatamodel */,
+			);
+			currentVersion = 62C408C224EEF8A00082108C /* ArticleModel.xcdatamodel */;
+			path = ArticleModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 621A969C24ED4C3C00FAC9F4 /* Project object */;
 }
