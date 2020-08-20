@@ -9,17 +9,39 @@
 import Foundation
 
 enum FavoritesListEvent {
-
+    case open(ArticleModel)
 }
 
-class FavoritesListViewModel: BaseViewModel<FavoritesListEvent> {
+class FavoritesListViewModel: ListViewModel<FavoritesListEvent> {
 
     // MARK: - Properties
     
+    let storage: ArticleStorageService
+    
     // MARK: - Init and Deinit
+    
+    init(storage: ArticleStorageService, eventHandler: @escaping Handler<FavoritesListEvent>) {
+        self.storage = storage
+        
+        super.init(eventHandler: eventHandler)
+    }
     
     // MARK: - Public
 
+    override func updateData() {
+        if let articles = self.storage.readAllObjects() {
+            self.articles.accept(articles)
+        } else {
+            self.handle(StorageError.invalidFetch)
+        }
+    }
+    
+    override func onSelect(indexPath: IndexPath) {
+        guard let article = self.articles.value.object(at: indexPath.row) else { return }
+
+        self.eventHandler(.open(article))
+    }
+    
     // MARK: - Private
 }
 

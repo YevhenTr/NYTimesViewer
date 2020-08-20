@@ -114,7 +114,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     // MARK: - FavoritesCoordinator
 
     private func createFavoritesCoordinator() -> FavoritesCoordinator {
-        let favoritesCoordinator = FavoritesCoordinator(eventHandler: self.favoritesEventHandler)
+        let favoritesCoordinator = FavoritesCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.favoritesEventHandler)
 
         self.favoritesCoordinator = favoritesCoordinator
 

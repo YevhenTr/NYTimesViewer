@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class FavoritesCoordinator: BaseCoordinator<FavoritesCoordinator.Event> {
+public final class FavoritesCoordinator: MainCoordinator<FavoritesCoordinator.Event> {
 
     // MARK: - Subtypes
     
@@ -31,7 +31,7 @@ public final class FavoritesCoordinator: BaseCoordinator<FavoritesCoordinator.Ev
     // MARK: - FavoritesListViewController
 
     private func createFavoritesListViewController() -> FavoritesListViewController {
-        let viewModel = FavoritesListViewModel(eventHandler: self.favoritesListEventHandler)
+        let viewModel = FavoritesListViewModel(storage: self.storage, eventHandler: self.favoritesListEventHandler)
         let controller = FavoritesListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favoritesIcon"), tag: 4)
 
@@ -41,6 +41,10 @@ public final class FavoritesCoordinator: BaseCoordinator<FavoritesCoordinator.Ev
     }
     
     private func favoritesListEventHandler(_ event: FavoritesListEvent) {
-
+        switch event {
+        case .open(let article):
+            self.push(controller: self.createArticleViewController(article))
+            self.navigationController.isNavigationBarHidden = false
+        }
     }
 }

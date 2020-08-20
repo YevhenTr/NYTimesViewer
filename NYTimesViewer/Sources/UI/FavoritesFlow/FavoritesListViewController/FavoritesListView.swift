@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesListView: BaseView<FavoritesListViewModel> {
+class FavoritesListView: ListView<FavoritesListEvent, FavoritesListViewModel> {
 
     // MARK: - Subtypes
 
@@ -29,9 +29,8 @@ class FavoritesListView: BaseView<FavoritesListViewModel> {
         
     }
     
-    // MARK: - Private
-    
-    private func configure() {
-        
+    override public func configure() {
+        super.configure()
+
     }
 }

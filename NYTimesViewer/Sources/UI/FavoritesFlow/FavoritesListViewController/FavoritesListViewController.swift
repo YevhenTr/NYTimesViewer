@@ -8,6 +8,6 @@
 
 import UIKit
 
-class FavoritesListViewController: BaseViewController<FavoritesListView, FavoritesListViewModel> {
+class FavoritesListViewController: ListViewController<FavoritesListEvent, FavoritesListViewModel, FavoritesListView> {
 
 }
