@@ -30,14 +30,14 @@ class EmailedListView: ListView<EmailedListEvent, EmailedListViewModel> {
     override public func fill(with viewModel: EmailedListViewModel) {
         super.fill(with: viewModel)
         
-        self.tableAdapter?.eventHandler = { [weak viewModel] event in
-            switch event {
-            case .didSelect(let indexPath):
-                viewModel?.onSelect(indexPath: indexPath)
-            default:
-                break
-            }
-        }
+//        self.tableAdapter?.eventHandler = { [weak viewModel] event in
+//            switch event {
+//            case .didSelect(let indexPath):
+//                viewModel?.onSelect(indexPath: indexPath)
+//            default:
+//                break
+//            }
+//        }
         
         viewModel.articles
             .observeOn(MainScheduler.asyncInstance)

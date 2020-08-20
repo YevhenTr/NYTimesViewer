@@ -21,8 +21,6 @@ class EmailedListViewModel: ListViewModel<EmailedListEvent> {
     // MARK: - Public
     
     override func updateData() {
-        super.updateData()
-        
         self.networking?.getMostEmailedArticles() { [weak self] result in
             switch result {
             case .success(let response):
@@ -33,7 +31,7 @@ class EmailedListViewModel: ListViewModel<EmailedListEvent> {
         }
     }
     
-    public func onSelect(indexPath: IndexPath) {
+    override func onSelect(indexPath: IndexPath) {        
         guard let article = self.articles.value.object(at: indexPath.row) else { return }
 
         self.eventHandler(.open(article))

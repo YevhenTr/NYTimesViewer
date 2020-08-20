@@ -41,6 +41,14 @@ class ListView<Event, ViewModel: ListViewModel<Event>>: BaseView<ViewModel> {
     override public func fill(with viewModel: ViewModel) {
         super.fill(with: viewModel)
         
+        self.tableAdapter?.eventHandler = { [weak viewModel] event in
+            switch event {
+            case .didSelect(let indexPath):
+                viewModel?.onSelect(indexPath: indexPath)
+            default:
+                break
+            }
+        }
     }
         
     public func configure() {

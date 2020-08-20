@@ -24,7 +24,11 @@ class ListViewModel<Event>: BaseViewModel<Event> {
         
     }
     
-    public func handle(_ error: Error) {
+    open func onSelect(indexPath: IndexPath) {
+
+    }
+
+    open func handle(_ error: Error) {
         debugPrint(error)
     }
     
