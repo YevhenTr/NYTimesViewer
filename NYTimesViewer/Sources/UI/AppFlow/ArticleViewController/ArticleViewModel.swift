@@ -23,14 +23,24 @@ class ArticleViewModel: BaseViewModel<ArticleEvent> {
     
     // MARK: - Init and Deinit
     
-    init(article: ArticleModel, networking: Networking? = nil, eventHandler: @escaping Handler<ArticleEvent>) {
+    init(article: ArticleModel, eventHandler: @escaping Handler<ArticleEvent>) {
         self.article = article
         self.isFavorite.accept(false)
         
-        super.init(networking: networking, eventHandler: eventHandler)
+        super.init(networking: nil, eventHandler: eventHandler)
     }
     
     // MARK: - Public
+    
+    public func onAdd() {
+        //  save article to storage
+        self.isFavorite.accept(true)
+    }
+    
+    public func onRemove() {
+        //  remove article from storage
+        self.isFavorite.accept(false)
+    }
 
     // MARK: - Private
 }

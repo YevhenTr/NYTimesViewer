@@ -53,18 +53,12 @@ class ArticleView: BaseView<ArticleViewModel> {
             .disposed(by: self)
         
         self.addItem?.rx.tap
-            .bind { [weak self] in
-                debugPrint("select")
-                self?.navigationItem?.rightBarButtonItem = self?.removeItem
-            }
+            .bind { [weak viewModel] in viewModel?.onAdd() }
             .disposed(by: self)
 
         
         self.removeItem?.rx.tap
-            .bind { [weak self] in
-                debugPrint("deselect")
-                self?.navigationItem?.rightBarButtonItem = self?.addItem
-            }
+            .bind { [weak viewModel] in viewModel?.onRemove() }
             .disposed(by: self)
     }
     

@@ -62,7 +62,7 @@ public final class MostEmailedCoordinator: BaseCoordinator<MostEmailedCoordinato
     // MARK: - ArticleViewController
     
     private func createArticleViewController(_ article: ArticleModel) -> ArticleViewController {
-        let viewModel = ArticleViewModel(article: article, networking: self.networking, eventHandler: self.articleEventHandler)
+        let viewModel = ArticleViewModel(article: article, eventHandler: self.articleEventHandler)
         let controller = ArticleViewController(viewModel: viewModel)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController.isNavigationBarHidden = false
