@@ -429,7 +429,6 @@
 		621A96F124ED55AD00FAC9F4 /* EmailedListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				62910F2A24EEB67100C6ECE0 /* Private */,
 				621A96F224ED55DB00FAC9F4 /* EmailedListViewController.swift */,
 				621A96F324ED55DB00FAC9F4 /* EmailedListView.swift */,
 				621A96F424ED55DB00FAC9F4 /* EmailedListViewModel.swift */,
@@ -469,15 +468,6 @@
 				621A972B24ED769100FAC9F4 /* ViewedListViewController.xib */,
 			);
 			path = VIewedListViewController;
-			sourceTree = "<group>";
-		};
-		62910F2A24EEB67100C6ECE0 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				62A6FC3F24EE59CB005CD79D /* ArticleCell.swift */,
-				62A6FC4024EE59CB005CD79D /* ArticleCell.xib */,
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		62A6FC2224EDBF6E005CD79D /* Errors */ = {
@@ -535,6 +525,8 @@
 		62A6FC4524EE665B005CD79D /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				62A6FC3F24EE59CB005CD79D /* ArticleCell.swift */,
+				62A6FC4024EE59CB005CD79D /* ArticleCell.xib */,
 			);
 			path = Private;
 			sourceTree = "<group>";
