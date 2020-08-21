@@ -20,6 +20,7 @@ class ListView: BaseView<ListViewModel> {
     // MARK: - Properties
 
     @IBOutlet var articleTableView: UITableView?
+    @IBOutlet var spinnerView: SpinnerView?
     
     public var tableAdapter: TableAdapter?
 
@@ -52,6 +53,13 @@ class ListView: BaseView<ListViewModel> {
                 self?.tableAdapter?.sections = [Section(cell: ArticleCell.self, models: models)]
             }
             .disposed(by: self)
+        
+        viewModel.isLoading
+            .observeOn(MainScheduler.asyncInstance)
+            .bind { [weak self] isLoading in
+                self?.spinnerView?.make(hidden: !isLoading)
+            }
+        .disposed(by: self)
     }
         
     // MARK: - Private

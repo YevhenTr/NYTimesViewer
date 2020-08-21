@@ -19,6 +19,7 @@ class ListViewModel: BaseViewModel<ListEvent> {
     // MARK: - Properties
     
     public let articles = BehaviorRelay<[ArticleModel]>(value: [])
+    public let isLoading = BehaviorRelay<Bool>(value: false)
     
     public var updateAction: ((@escaping Handler<Result<ArticlesResponseModel, Error>>) -> ())?
         
@@ -26,13 +27,16 @@ class ListViewModel: BaseViewModel<ListEvent> {
     
     public func updateData() {
         guard let updateAction = self.updateAction else { return }
+        self.isLoading.accept(true)
         
-        updateAction() { result in
+        updateAction() { [weak self] result in
+            self?.isLoading.accept(false)
+            
             switch result {
             case .success(let response):
-                self.handle(response.results)
+                self?.handle(response.results)
             case .failure(let error):
-                self.handle(error)
+                self?.handle(error)
             }
         }
     }

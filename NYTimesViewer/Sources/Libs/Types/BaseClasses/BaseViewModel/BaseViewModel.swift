@@ -13,9 +13,6 @@ class BaseViewModel<Event>: NSObject {
     // MARK: - Properties
 
     public let eventHandler: Handler<Event>
-
-    public var lockHandler: EmptyAction?
-    public var unlockHandler: EmptyAction?
     
     public let networking: Networking?
 
