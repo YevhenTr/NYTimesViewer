@@ -8,6 +8,7 @@
 
 import Foundation
 
+import Reachability
 import RxRelay
 
 enum ArticleEvent {
@@ -21,12 +22,18 @@ class ArticleViewModel: BaseViewModel<ArticleEvent> {
     public let article: ArticleModel
     public let isFavorite = BehaviorRelay<Bool?>(value: nil)
     public let storage: ArticleStorageService
+    public let reachability: Reachability?
+    
+    public var isReachable: Bool {
+        return self.reachability?.connection ?? .wifi != .none
+    }
     
     // MARK: - Init and Deinit
     
     init(article: ArticleModel, serviceContainer: ServiceContainer, eventHandler: @escaping Handler<ArticleEvent>) {
         self.article = article
         self.storage = serviceContainer.articleStorage
+        self.reachability = serviceContainer.reachability
         
         super.init(eventHandler: eventHandler)
         

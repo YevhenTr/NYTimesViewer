@@ -21,6 +21,10 @@
                     <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b01-8V-ScZ" customClass="NoConnectionView" customModule="NYTimesViewer" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUg-bm-uH9">
                     <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,8 +36,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="b01-8V-ScZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Anq-pE-MYe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sUg-bm-uH9" secondAttribute="bottom" id="Aqw-fc-VOe"/>
                 <constraint firstItem="FOL-Mq-09p" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Z77-iy-JoC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="b01-8V-ScZ" secondAttribute="bottom" id="dIp-zv-hod"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b01-8V-ScZ" secondAttribute="trailing" id="hUx-P0-18G"/>
+                <constraint firstItem="b01-8V-ScZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hnZ-EV-7s4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FOL-Mq-09p" secondAttribute="bottom" id="kGC-hi-kyL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FOL-Mq-09p" secondAttribute="trailing" id="oJW-kJ-Ph7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sUg-bm-uH9" secondAttribute="trailing" id="qcP-ib-AMf"/>
@@ -43,6 +51,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
+                <outlet property="noConnectionView" destination="b01-8V-ScZ" id="VOK-WO-WNb"/>
                 <outlet property="spinnerView" destination="FOL-Mq-09p" id="DqJ-xb-Taq"/>
                 <outlet property="webView" destination="sUg-bm-uH9" id="BIn-nS-Kue"/>
             </connections>

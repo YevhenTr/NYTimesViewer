@@ -8,6 +8,7 @@
 
 import UIKit
 
+import Reachability
 import WebKit
 import RxSwift
 import RxCocoa
@@ -19,6 +20,7 @@ class ArticleView: BaseView<ArticleViewModel> {
     // MARK: - Properties
 
     @IBOutlet var spinnerView: SpinnerView?
+    @IBOutlet var noConnectionView: NoConnectionView?
     @IBOutlet var webView: WKWebView?
     
     public var navigationItem: UINavigationItem?
@@ -38,29 +40,33 @@ class ArticleView: BaseView<ArticleViewModel> {
     override public func fill(with viewModel: ArticleViewModel) {
         super.fill(with: viewModel)
                 
-        if let url = URL(string: viewModel.article.url) {
-            self.webView?.load(URLRequest(url: url))
-        }
-        
-        viewModel.isFavorite
-            .observeOn(MainScheduler.asyncInstance)
-            .bind { [weak self] in
-                if let isFavorite = $0 {
-                    self?.navigationItem?.rightBarButtonItem = isFavorite ? self?.removeItem : self?.addItem
-                } else {
-                    self?.navigationItem?.rightBarButtonItem = nil
-                }
+        if viewModel.isReachable {
+            if let url = URL(string: viewModel.article.url) {
+                self.webView?.load(URLRequest(url: url))
             }
-            .disposed(by: self)
-        
-        self.addItem?.rx.tap
-            .bind { [weak viewModel] in viewModel?.onAdd() }
-            .disposed(by: self)
+            
+            viewModel.isFavorite
+                .observeOn(MainScheduler.asyncInstance)
+                .bind { [weak self] in
+                    if let isFavorite = $0 {
+                        self?.navigationItem?.rightBarButtonItem = isFavorite ? self?.removeItem : self?.addItem
+                    } else {
+                        self?.navigationItem?.rightBarButtonItem = nil
+                    }
+                }
+                .disposed(by: self)
+            
+            self.addItem?.rx.tap
+                .bind { [weak viewModel] in viewModel?.onAdd() }
+                .disposed(by: self)
 
-        
-        self.removeItem?.rx.tap
-            .bind { [weak viewModel] in viewModel?.onRemove() }
-            .disposed(by: self)
+            
+            self.removeItem?.rx.tap
+                .bind { [weak viewModel] in viewModel?.onRemove() }
+                .disposed(by: self)
+        }
+
+        self.noConnectionView?.make(hidden: viewModel.isReachable)
     }
     
     // MARK: - Private
