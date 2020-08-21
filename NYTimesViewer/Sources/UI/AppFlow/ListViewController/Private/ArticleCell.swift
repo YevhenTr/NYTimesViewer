@@ -62,11 +62,13 @@ final class ArticleCell: BaseCell<ArticleModel, EmptyCellEvent> {
         if let imageURL = model.imageURL.flatMap(URL.init(string:)) {
             self.downloadTask = self.articleImageView?.kf
                 .setImage(with: imageURL, placeholder: self.placeholder)
+        } else {
+            self.articleImageView?.image = self.placeholder
         }
         
         self.articleTitleTextView?.text = model.title
         self.articleDateLabel?.text = model.publishedAt
-        self.articleAuthorLabel?.text = model.byLine
+        self.articleAuthorLabel?.text = model.byLine 
         self.ArticlePreviewTextView?.text = model.preview
     }
 }
