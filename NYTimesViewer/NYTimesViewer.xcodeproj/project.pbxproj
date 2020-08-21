@@ -58,6 +58,7 @@
 		62EBDD7D24EF4C800017E0DB /* Hiddable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EBDD7C24EF4C800017E0DB /* Hiddable.swift */; };
 		62EBDD8024EF4CB60017E0DB /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EBDD7E24EF4CB60017E0DB /* SpinnerView.swift */; };
 		62EBDD8124EF4CB60017E0DB /* SpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62EBDD7F24EF4CB60017E0DB /* SpinnerView.xib */; };
+		62EBDD8624EF51520017E0DB /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EBDD8524EF51520017E0DB /* UIViewController+Alerts.swift */; };
 		6FC57BE02A69800F886A2AAB /* Pods_NYTimesViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1117414678C432A01CDC32 /* Pods_NYTimesViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		62EBDD7C24EF4C800017E0DB /* Hiddable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hiddable.swift; sourceTree = "<group>"; };
 		62EBDD7E24EF4CB60017E0DB /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		62EBDD7F24EF4CB60017E0DB /* SpinnerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpinnerView.xib; sourceTree = "<group>"; };
+		62EBDD8524EF51520017E0DB /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		D3E0BD027372FF891ABFC27E /* Pods-NYTimesViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesViewer.debug.xcconfig"; path = "Target Support Files/Pods-NYTimesViewer/Pods-NYTimesViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,6 +267,7 @@
 			children = (
 				621A96C724ED4EAB00FAC9F4 /* UINavigationViewController+Extensions.swift */,
 				62A6FC3D24EE5789005CD79D /* UITableView+Extensions.swift */,
+				62EBDD8524EF51520017E0DB /* UIViewController+Alerts.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				62A46E1E24EF40F200E4B97B /* ListViewController.swift in Sources */,
 				62A6FC1B24EDAE0A005CD79D /* Dictionary+Extensions.swift in Sources */,
 				62EBDD8024EF4CB60017E0DB /* SpinnerView.swift in Sources */,
+				62EBDD8624EF51520017E0DB /* UIViewController+Alerts.swift in Sources */,
 				62A46E2224EF46E200E4B97B /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

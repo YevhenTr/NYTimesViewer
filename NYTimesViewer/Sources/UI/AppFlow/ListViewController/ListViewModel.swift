@@ -12,6 +12,7 @@ import RxRelay
 
 enum ListEvent {
     case open(ArticleModel)
+    case error(Error)
 }
 
 class ListViewModel: BaseViewModel<ListEvent> {
@@ -50,7 +51,7 @@ class ListViewModel: BaseViewModel<ListEvent> {
     // MARK: - Private
     
     private func handle(_ error: Error) {
-        debugPrint(error)
+        self.eventHandler(.error(error))
     }
     
     private func handle(_ articles: [ArticleModel]) {

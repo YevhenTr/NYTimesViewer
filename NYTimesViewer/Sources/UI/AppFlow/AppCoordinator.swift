@@ -114,6 +114,8 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         case .open(let article):
             self.push(controller: self.createArticleViewController(article))
             self.navigationController.isNavigationBarHidden = false
+        case .error(let error):
+            self.rootViewController().showErrorAlert(error: error)
         }
     }
     
