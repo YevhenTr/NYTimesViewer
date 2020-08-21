@@ -10,6 +10,13 @@ import Foundation
 
 enum AppTextConstants {
     
-    static let main = "Main"
-    static let detail = "Detail"
+    static let close = "Close"
+    static let error = "Error"
+    static let ok = "Ok"
+    
+    static let emailed = "Emailed"
+    static let shared = "Shared"
+    static let viewed = "Viewed"
+    static let favorites = "Favorites"
+
 }

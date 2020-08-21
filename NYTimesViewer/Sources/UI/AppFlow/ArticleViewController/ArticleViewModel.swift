@@ -43,7 +43,7 @@ class ArticleViewModel: BaseViewModel<ArticleEvent> {
     // MARK: - Public
     
     public func onAdd() {
-        let isSaved = self.storage.save(object: article)
+        let isSaved = self.storage.save(object: self.article)
         self.isFavorite.accept(isSaved)
     }
     

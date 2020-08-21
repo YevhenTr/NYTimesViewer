@@ -10,10 +10,12 @@ import UIKit
 
 extension UIViewController {
     
+    private typealias Text = AppTextConstants
+    
     func showAlert(title: String?,
                    message: String? = nil,
                    preferredStyle: UIAlertController.Style = .alert,
-                   actions: [UIAlertAction]? = [UIAlertAction(title: "Close", style: .default, handler: nil)]) {
+                   actions: [UIAlertAction]? = [UIAlertAction(title: Text.close, style: .default, handler: nil)]) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
                                                 preferredStyle: preferredStyle)
@@ -22,6 +24,6 @@ extension UIViewController {
     }
 
     func showErrorAlert(error: Error?) {
-        self.showAlert(title: "Error", message: error?.localizedDescription)
+        self.showAlert(title: Text.error, message: error?.localizedDescription)
     }
 }

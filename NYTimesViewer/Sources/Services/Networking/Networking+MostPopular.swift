@@ -11,7 +11,7 @@ import Foundation
 fileprivate enum Constant {
     
     static let mostPopularPrefix = "/svc/mostpopular/v2/"
-    static let period = "/1.json"  //  1, 7 or 30 days
+    static let period = "/30.json"  //  1, 7 or 30 days
 }
 
 extension Networking {

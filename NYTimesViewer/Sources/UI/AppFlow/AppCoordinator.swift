@@ -17,6 +17,8 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         case favorites
     }
     
+    private typealias Text = AppTextConstants
+    
     // MARK: - Properties
     
     private let serviceContainer: ServiceContainer
@@ -73,7 +75,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     private func createEmailedListViewController() -> ListViewController {
         let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
-        let barItem = UITabBarItem(title: "Emailed", image: UIImage(named: "emailIcon"), tag: 1)
+        let barItem = UITabBarItem(title: Text.emailed, image: UIImage(named: "emailIcon"), tag: 1)
 
         controller.tabBarItem = barItem
         viewModel.updateAction = self.networking.getMostEmailedArticles
@@ -86,7 +88,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     private func createSharedListViewController() -> ListViewController {
         let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
-        let barItem = UITabBarItem(title: "Shared", image: UIImage(named: "shareIcon"), tag: 2)
+        let barItem = UITabBarItem(title: Text.shared, image: UIImage(named: "shareIcon"), tag: 2)
 
         controller.tabBarItem = barItem
         viewModel.updateAction = self.networking.getMostSharedArticles
@@ -99,7 +101,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     private func createViewedListViewController() -> ListViewController {
         let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
-        let barItem = UITabBarItem(title: "Viewed", image: UIImage(named: "likeIcon"), tag: 3)
+        let barItem = UITabBarItem(title: Text.viewed, image: UIImage(named: "likeIcon"), tag: 3)
 
         controller.tabBarItem = barItem
         viewModel.updateAction = self.networking.getMostViewedArticles
@@ -112,7 +114,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     private func createFavoritesListViewController() -> ListViewController {
         let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
-        let barItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favoritesIcon"), tag: 4)
+        let barItem = UITabBarItem(title: Text.favorites, image: UIImage(named: "favoritesIcon"), tag: 4)
 
         controller.tabBarItem = barItem
         viewModel.shouldCheckNetwork = false
