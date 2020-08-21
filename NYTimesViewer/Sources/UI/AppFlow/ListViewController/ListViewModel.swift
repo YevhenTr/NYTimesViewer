@@ -24,6 +24,7 @@ class ListViewModel: BaseViewModel<ListEvent> {
     public let isLoading = BehaviorRelay<Bool>(value: false)
     public let reachability: Reachability?
     
+    public var shouldCheckNetwork = true
     public var updateAction: ((@escaping Handler<Result<ArticlesResponseModel, Error>>) -> ())?
         
     // MARK: - Init and Deinit
@@ -38,7 +39,10 @@ class ListViewModel: BaseViewModel<ListEvent> {
     
     public func updateData() {
         guard let updateAction = self.updateAction else { return }
-        guard self.reachability?.connection ?? .wifi != .none else { return }
+        
+        if self.shouldCheckNetwork {
+            guard self.reachability?.connection ?? .wifi != .none else { return }
+        }
         
         self.isLoading.accept(true)
         

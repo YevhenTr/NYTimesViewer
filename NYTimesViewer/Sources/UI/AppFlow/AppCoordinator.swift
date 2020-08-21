@@ -115,6 +115,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         let barItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favoritesIcon"), tag: 4)
 
         controller.tabBarItem = barItem
+        viewModel.shouldCheckNetwork = false
         viewModel.updateAction = self.storage.readAllArticles
         
         return controller

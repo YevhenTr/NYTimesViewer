@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Reachability
+
 class ListViewController: BaseViewController<ListView, ListViewModel> {
 
     // MARK: - View Lifecycle
@@ -18,6 +20,10 @@ class ListViewController: BaseViewController<ListView, ListViewModel> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if self.viewModel.shouldCheckNetwork {
+            self.rootView?.noConnectionView?.make(hidden: self.viewModel.reachability?.connection ?? .wifi != .none)
+        }
         
         self.viewModel.updateData()
     }

@@ -21,6 +21,7 @@ class ListView: BaseView<ListViewModel> {
 
     @IBOutlet var articleTableView: UITableView?
     @IBOutlet var spinnerView: SpinnerView?
+    @IBOutlet var noConnectionView: NoConnectionView?
     
     public var tableAdapter: TableAdapter?
 
@@ -59,7 +60,7 @@ class ListView: BaseView<ListViewModel> {
             .bind { [weak self] isLoading in
                 self?.spinnerView?.make(hidden: !isLoading)
             }
-        .disposed(by: self)
+            .disposed(by: self)
     }
         
     // MARK: - Private

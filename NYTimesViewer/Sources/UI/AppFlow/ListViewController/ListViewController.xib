@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -17,6 +17,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgY-ow-eOP" customClass="NoConnectionView" customModule="NYTimesViewer" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQZ-Ca-WGJ" customClass="SpinnerView" customModule="NYTimesViewer" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -30,16 +34,21 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="06h-Rt-7Et" secondAttribute="trailing" id="3G2-bv-EZA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iQZ-Ca-WGJ" secondAttribute="bottom" id="4Pg-fB-krA"/>
+                <constraint firstItem="YgY-ow-eOP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="AR1-nU-Xks"/>
+                <constraint firstItem="YgY-ow-eOP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Dqj-F4-hle"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iQZ-Ca-WGJ" secondAttribute="trailing" id="H9E-D8-IWJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="06h-Rt-7Et" secondAttribute="bottom" id="ITH-FP-sRu"/>
                 <constraint firstItem="06h-Rt-7Et" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="M5X-YJ-SSR"/>
                 <constraint firstItem="06h-Rt-7Et" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="T18-um-YcM"/>
                 <constraint firstItem="iQZ-Ca-WGJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VFX-M4-7A2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YgY-ow-eOP" secondAttribute="trailing" id="igb-zj-iiT"/>
                 <constraint firstItem="iQZ-Ca-WGJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="l6j-R5-3Dt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YgY-ow-eOP" secondAttribute="bottom" id="pH0-6N-9SA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
                 <outlet property="articleTableView" destination="06h-Rt-7Et" id="lp5-Qk-4kD"/>
+                <outlet property="noConnectionView" destination="YgY-ow-eOP" id="Jsl-BS-O3v"/>
                 <outlet property="spinnerView" destination="iQZ-Ca-WGJ" id="kf7-8O-4iP"/>
             </connections>
             <point key="canvasLocation" x="132" y="106"/>
