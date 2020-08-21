@@ -19,13 +19,16 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     
     // MARK: - Properties
     
+    private let serviceContainer: ServiceContainer
     private let networking: Networking
     private let storage: ArticleStorageService
+    
     private var tabbarViewController: UITabBarController?  //  root view controller
     
     // MARK: - Init and Deinit
     
     init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<AppCoordinator.Event>) {
+        self.serviceContainer = serviceContainer
         self.networking = serviceContainer.networking
         self.storage = serviceContainer.articleStorage
         
@@ -65,8 +68,10 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         ]
     }
     
+    // MARK: - EmailedListViewController
+    
     private func createEmailedListViewController() -> ListViewController {
-        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Emailed", image: UIImage(named: "emailIcon"), tag: 1)
 
@@ -76,8 +81,10 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
+    // MARK: - SharedListViewController
+
     private func createSharedListViewController() -> ListViewController {
-        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Shared", image: UIImage(named: "shareIcon"), tag: 2)
 
@@ -87,8 +94,10 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
+    // MARK: - ViewedListViewController
+    
     private func createViewedListViewController() -> ListViewController {
-        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Viewed", image: UIImage(named: "likeIcon"), tag: 3)
 
@@ -98,8 +107,10 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
+    // MARK: - FavoritesListViewController
+    
     private func createFavoritesListViewController() -> ListViewController {
-        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let viewModel = ListViewModel(serviceContainer: self.serviceContainer, eventHandler: self.listEventHandler)
         let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favoritesIcon"), tag: 4)
 
@@ -121,8 +132,8 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     
     // MARK: - ArticleViewController
     
-    func createArticleViewController(_ article: ArticleModel) -> ArticleViewController {
-        let viewModel = ArticleViewModel(article: article, storage: self.storage, eventHandler: self.articleEventHandler)
+    private func createArticleViewController(_ article: ArticleModel) -> ArticleViewController {
+        let viewModel = ArticleViewModel(article: article, serviceContainer: self.serviceContainer, eventHandler: self.articleEventHandler)
         let controller = ArticleViewController(viewModel: viewModel)
         controller.hidesBottomBarWhenPushed = true
         self.navigationController.isNavigationBarHidden = false
@@ -130,7 +141,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
-    func articleEventHandler(_ event: ArticleEvent) {
+    private func articleEventHandler(_ event: ArticleEvent) {
         switch event {
         case .back:
             self.navigationController.isNavigationBarHidden = true

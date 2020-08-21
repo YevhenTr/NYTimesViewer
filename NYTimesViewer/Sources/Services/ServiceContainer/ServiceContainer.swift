@@ -8,17 +8,23 @@
 
 import Foundation
 
+import Reachability
 
 struct ServiceContainer {
     
     // MARK: - Properties
     
+    let reachability: Reachability?
     let networking: Networking
     let articleStorage: ArticleStorageService
     
     // MARK: - Init and Deinit
     
     init() {
+        let reachability = Reachability()
+        try? reachability?.startNotifier()
+        self.reachability = reachability
+        
         self.networking = Networking(api: NYTimesAPI())
         self.articleStorage = ArticleStorageService()
     }

@@ -14,13 +14,10 @@ class BaseViewModel<Event>: NSObject {
 
     public let eventHandler: Handler<Event>
     
-    public let networking: Networking?
-
     // MARK: - Init and Deinit
     
-    init(networking: Networking? = nil, eventHandler: @escaping Handler<Event>) {
+    init(serviceContainer: ServiceContainer? = nil, eventHandler: @escaping Handler<Event>) {
         self.eventHandler = eventHandler
-        self.networking = networking
         
         super.init()
     }

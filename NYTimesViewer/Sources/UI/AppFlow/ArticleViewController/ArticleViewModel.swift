@@ -24,11 +24,11 @@ class ArticleViewModel: BaseViewModel<ArticleEvent> {
     
     // MARK: - Init and Deinit
     
-    init(article: ArticleModel, storage: ArticleStorageService, eventHandler: @escaping Handler<ArticleEvent>) {
+    init(article: ArticleModel, serviceContainer: ServiceContainer, eventHandler: @escaping Handler<ArticleEvent>) {
         self.article = article
-        self.storage = storage
+        self.storage = serviceContainer.articleStorage
         
-        super.init(networking: nil, eventHandler: eventHandler)
+        super.init(eventHandler: eventHandler)
         
         self.checkFavorite()
     }

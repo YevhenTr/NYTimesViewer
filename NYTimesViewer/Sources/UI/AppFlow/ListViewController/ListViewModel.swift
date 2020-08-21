@@ -8,6 +8,7 @@
 
 import Foundation
 
+import Reachability
 import RxRelay
 
 enum ListEvent {
@@ -21,13 +22,24 @@ class ListViewModel: BaseViewModel<ListEvent> {
     
     public let articles = BehaviorRelay<[ArticleModel]>(value: [])
     public let isLoading = BehaviorRelay<Bool>(value: false)
+    public let reachability: Reachability?
     
     public var updateAction: ((@escaping Handler<Result<ArticlesResponseModel, Error>>) -> ())?
         
+    // MARK: - Init and Deinit
+    
+    init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<ListEvent>) {
+        self.reachability = serviceContainer.reachability
+        
+        super.init(eventHandler: eventHandler)
+    }
+    
     // MARK: - Public
     
     public func updateData() {
         guard let updateAction = self.updateAction else { return }
+        guard self.reachability?.connection ?? .wifi != .none else { return }
+        
         self.isLoading.accept(true)
         
         updateAction() { [weak self] result in
