@@ -14,7 +14,6 @@ class SpinnerView: NibDesignable, Hiddable {
     
     @IBOutlet var indicator: UIActivityIndicatorView?
     
-    
     // MARK: - Init and Deinit
 
     override init(frame: CGRect) {
@@ -32,6 +31,7 @@ class SpinnerView: NibDesignable, Hiddable {
     // MARK: - Private
 
     private func configure() {
+        self.backgroundColor = .clear
         self.isHidden = true
     }
 }

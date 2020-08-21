@@ -24,6 +24,7 @@ public class BaseCoordinator<Event> {
         let navController = UINavigationController(rootViewController: self.rootViewController())
         navController.isNavigationBarHidden = true
         navController.modalPresentation()
+        navController.navigationBar.isTranslucent = false
         
         return navController
     }()

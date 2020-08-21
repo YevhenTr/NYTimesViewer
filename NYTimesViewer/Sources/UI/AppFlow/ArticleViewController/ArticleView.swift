@@ -18,6 +18,7 @@ class ArticleView: BaseView<ArticleViewModel> {
 
     // MARK: - Properties
 
+    @IBOutlet var spinnerView: SpinnerView?
     @IBOutlet var webView: WKWebView?
     
     public var navigationItem: UINavigationItem?
@@ -77,10 +78,10 @@ class ArticleView: BaseView<ArticleViewModel> {
 extension ArticleView: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        debugPrint(#function)
+        self.spinnerView?.show()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        debugPrint(#function)
+        self.spinnerView?.hide()
     }
 }
