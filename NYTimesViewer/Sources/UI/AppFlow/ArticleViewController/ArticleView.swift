@@ -84,10 +84,10 @@ class ArticleView: BaseView<ArticleViewModel> {
 extension ArticleView: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-//        self.spinnerView?.show()
+        self.spinnerView?.show()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        self.spinnerView?.hide()
+        self.spinnerView?.hide()
     }
 }
