@@ -2,7 +2,7 @@
 //  ListViewModel.swift
 //  NYTimesViewer
 //
-//  Created by Yevhen Triukhan on 20.08.2020.
+//  Created by Yevhen Triukhan on 21.08.2020.
 //  Copyright © 2020 Yevhen Triukhan. All rights reserved.
 //
 
@@ -10,32 +10,46 @@ import Foundation
 
 import RxRelay
 
-class ListViewModel<Event>: BaseViewModel<Event> {
+enum ListEvent {
+    case open(ArticleModel)
+}
+
+class ListViewModel: BaseViewModel<ListEvent> {
 
     // MARK: - Properties
     
     public let articles = BehaviorRelay<[ArticleModel]>(value: [])
     
-    // MARK: - Init and Deinit
-    
+    public var updateAction: ((@escaping Handler<Result<ArticlesResponseModel, Error>>) -> ())?
+        
     // MARK: - Public
     
-    open func updateData() {
+    public func updateData() {
+        guard let updateAction = self.updateAction else { return }
         
+        updateAction() { result in
+            switch result {
+            case .success(let response):
+                self.handle(response.results)
+            case .failure(let error):
+                self.handle(error)
+            }
+        }
     }
     
-    open func onSelect(indexPath: IndexPath) {
+    public func onSelect(indexPath: IndexPath) {
+        guard let article = self.articles.value.object(at: indexPath.row) else { return }
 
+        self.eventHandler(.open(article))
     }
-
-    open func handle(_ error: Error) {
+    
+    // MARK: - Private
+    
+    private func handle(_ error: Error) {
         debugPrint(error)
     }
     
-    public func handle(_ articles: [ArticleModel]) {
+    private func handle(_ articles: [ArticleModel]) {
         self.articles.accept(articles)
     }
-
-    // MARK: - Private
 }
-

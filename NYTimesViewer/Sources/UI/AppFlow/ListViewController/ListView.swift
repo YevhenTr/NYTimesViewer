@@ -2,7 +2,7 @@
 //  ListView.swift
 //  NYTimesViewer
 //
-//  Created by Yevhen Triukhan on 20.08.2020.
+//  Created by Yevhen Triukhan on 21.08.2020.
 //  Copyright © 2020 Yevhen Triukhan. All rights reserved.
 //
 
@@ -13,12 +13,7 @@ import RxCocoa
 
 import SnapKit
 
-// WARNING
-// do not use storyboard for setup UI
-// all elements should be setup programmatically
-// this is a base class, storyboard will be replaced in child class init
-
-class ListView<Event, ViewModel: ListViewModel<Event>>: BaseView<ViewModel> {
+class ListView: BaseView<ListViewModel> {
 
     // MARK: - Subtypes
 
@@ -38,7 +33,7 @@ class ListView<Event, ViewModel: ListViewModel<Event>>: BaseView<ViewModel> {
       
     // MARK: - Public
 
-    override public func fill(with viewModel: ViewModel) {
+    override public func fill(with viewModel: ListViewModel) {
         super.fill(with: viewModel)
         
         self.tableAdapter?.eventHandler = { [weak viewModel] event in
@@ -59,17 +54,9 @@ class ListView<Event, ViewModel: ListViewModel<Event>>: BaseView<ViewModel> {
             .disposed(by: self)
     }
         
-    public func configure() {
-        let tableView = UITableView()
-        tableView.separatorStyle = .none
-        self.articleTableView = tableView
-        self.addSubview(tableView)
-        
-        tableView.snp.makeConstraints {
-            $0.edges.equalTo(safeAreaLayoutGuide.snp.edges)
-        }
-        
-        let tableAdapter = TableAdapter(table: tableView, cells: [ArticleCell.self])
-        self.tableAdapter = tableAdapter
+    // MARK: - Private
+    
+    private func configure() {
+        self.tableAdapter = TableAdapter(table: self.articleTableView, cells: [ArticleCell.self])
     }
 }

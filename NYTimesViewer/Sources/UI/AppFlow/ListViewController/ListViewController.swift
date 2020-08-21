@@ -2,13 +2,13 @@
 //  ListViewController.swift
 //  NYTimesViewer
 //
-//  Created by Yevhen Triukhan on 20.08.2020.
+//  Created by Yevhen Triukhan on 21.08.2020.
 //  Copyright © 2020 Yevhen Triukhan. All rights reserved.
 //
 
 import UIKit
 
-class ListViewController<Event, ViewModel: ListViewModel<Event>, View: ListView<Event, ViewModel>>: BaseViewController<View, ViewModel> {
+class ListViewController: BaseViewController<ListView, ListViewModel> {
 
     // MARK: - View Lifecycle
     

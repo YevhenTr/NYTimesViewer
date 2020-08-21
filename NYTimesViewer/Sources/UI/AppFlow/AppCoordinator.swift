@@ -19,20 +19,13 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
     
     // MARK: - Properties
     
-    private let serviceContainer: ServiceContainer
-    let networking: Networking
-    let storage: ArticleStorageService
+    private let networking: Networking
+    private let storage: ArticleStorageService
     private var tabbarViewController: UITabBarController?  //  root view controller
-     
-    private var mostEmailedCoordinator: MostEmailedCoordinator?
-    private var mostSharedCoordinator: MostSharedCoordinator?
-    private var mostViewedCoordinator: MostViewedCoordinator?
-    private var favoritesCoordinator: FavoritesCoordinator?
     
     // MARK: - Init and Deinit
     
     init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<AppCoordinator.Event>) {
-        self.serviceContainer = serviceContainer
         self.networking = serviceContainer.networking
         self.storage = serviceContainer.articleStorage
         
@@ -53,9 +46,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         let controller = UITabBarController()
         
         controller.viewControllers = self.prepareAppControllers()
-//        controller.viewControllers = self.prepareAppCoordinators()
         self.tabbarViewController = controller
-        
         
         return controller
     }
@@ -74,9 +65,9 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         ]
     }
     
-    private func createEmailedListViewController() -> ListViewController_ {
-        let viewModel = ListViewModel_(eventHandler: self.listEventHandler)
-        let controller = ListViewController_(viewModel: viewModel)
+    private func createEmailedListViewController() -> ListViewController {
+        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Emailed", image: UIImage(named: "emailIcon"), tag: 1)
 
         controller.tabBarItem = barItem
@@ -85,9 +76,9 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
-    private func createSharedListViewController() -> ListViewController_ {
-        let viewModel = ListViewModel_(eventHandler: self.listEventHandler)
-        let controller = ListViewController_(viewModel: viewModel)
+    private func createSharedListViewController() -> ListViewController {
+        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Shared", image: UIImage(named: "shareIcon"), tag: 2)
 
         controller.tabBarItem = barItem
@@ -96,9 +87,9 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
-    private func createViewedListViewController() -> ListViewController_ {
-        let viewModel = ListViewModel_(eventHandler: self.listEventHandler)
-        let controller = ListViewController_(viewModel: viewModel)
+    private func createViewedListViewController() -> ListViewController {
+        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Viewed", image: UIImage(named: "likeIcon"), tag: 3)
 
         controller.tabBarItem = barItem
@@ -107,9 +98,9 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
-    private func createFavoritesListViewController() -> ListViewController_ {
-        let viewModel = ListViewModel_(eventHandler: self.listEventHandler)
-        let controller = ListViewController_(viewModel: viewModel)
+    private func createFavoritesListViewController() -> ListViewController {
+        let viewModel = ListViewModel(eventHandler: self.listEventHandler)
+        let controller = ListViewController(viewModel: viewModel)
         let barItem = UITabBarItem(title: "Favorites", image: UIImage(named: "favoritesIcon"), tag: 4)
 
         controller.tabBarItem = barItem
@@ -118,7 +109,7 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
         return controller
     }
     
-    private func listEventHandler(_ event: ListEvent_) {
+    private func listEventHandler(_ event: ListEvent) {
         switch event {
         case .open(let article):
             self.push(controller: self.createArticleViewController(article))
@@ -143,76 +134,4 @@ public final class AppCoordinator: BaseCoordinator<AppCoordinator.Event> {
             self.navigationController.isNavigationBarHidden = true
         }
     }
-    
-    // MARK: - Prepare
-    
-//    private func prepareAppCoordinators() -> [UIViewController] {
-//        let mostEmailedCoordinator = self.createMostEmailedCoordinator()
-//        let mostSharedCoordinator = self.createMostSharedCoordinator()
-//        let mostViewedCoordinator = self.createMostViewedCoordinator()
-//        let favoritesCoordinator = self.createFavoritesCoordinator()
-//
-//        return [
-//            mostEmailedCoordinator.navigationController,
-//            mostSharedCoordinator.navigationController,
-//            mostViewedCoordinator.navigationController,
-//            favoritesCoordinator.navigationController
-//        ]
-//    }
-    
-    // MARK: - MostEmailedCoordinator
-
-//    private func createMostEmailedCoordinator() -> MostEmailedCoordinator {
-//        let mostEmailedCoordinator = MostEmailedCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.mostEmailedEventHandler)
-//
-//        self.mostEmailedCoordinator = mostEmailedCoordinator
-//
-//        return mostEmailedCoordinator
-//    }
-//
-//    private func mostEmailedEventHandler(_ event: MostEmailedCoordinator.Event) {
-//
-//    }
-    
-    // MARK: - MostSharedCoordinator
-
-//    private func createMostSharedCoordinator() -> MostSharedCoordinator {
-//        let mostSharedCoordinator = MostSharedCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.mostSharedEventHandler)
-//
-//        self.mostSharedCoordinator = mostSharedCoordinator
-//
-//        return mostSharedCoordinator
-//    }
-//
-//    private func mostSharedEventHandler(_ event: MostSharedCoordinator.Event) {
-//
-//    }
-    
-    // MARK: - MostViewedCoordinator
-
-//    private func createMostViewedCoordinator() -> MostViewedCoordinator {
-//        let mostViewedCoordinator = MostViewedCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.mostViewedEventHandler)
-//
-//        self.mostViewedCoordinator = mostViewedCoordinator
-//
-//        return mostViewedCoordinator
-//    }
-//
-//    private func mostViewedEventHandler(_ event: MostViewedCoordinator.Event) {
-//
-//    }
-    
-    // MARK: - FavoritesCoordinator
-
-//    private func createFavoritesCoordinator() -> FavoritesCoordinator {
-//        let favoritesCoordinator = FavoritesCoordinator(serviceContainer: self.serviceContainer, eventHandler: self.favoritesEventHandler)
-//
-//        self.favoritesCoordinator = favoritesCoordinator
-//
-//        return favoritesCoordinator
-//    }
-//
-//    private func favoritesEventHandler(_ event: FavoritesCoordinator.Event) {
-//
-//    }
 }
