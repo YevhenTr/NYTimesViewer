@@ -26,11 +26,14 @@ class ListViewModel: BaseViewModel<ListEvent> {
     
     public var shouldCheckNetwork = true
     public var updateAction: ((@escaping Handler<Result<ArticlesResponseModel, Error>>) -> ())?
+    
+    private let storage: ArticleStorageService
         
     // MARK: - Init and Deinit
     
     init(serviceContainer: ServiceContainer, eventHandler: @escaping Handler<ListEvent>) {
         self.reachability = serviceContainer.reachability
+        self.storage = serviceContainer.articleStorage
         
         super.init(eventHandler: eventHandler)
     }
@@ -62,6 +65,17 @@ class ListViewModel: BaseViewModel<ListEvent> {
         guard let article = self.articles.value.object(at: indexPath.row) else { return }
 
         self.eventHandler(.open(article))
+    }
+    
+    public func onRemove(indexPath: IndexPath) {
+        if let articleID = self.articles.value.object(at: indexPath.row)?.id {
+            let isDeleted = self.storage.deleteObject(id: articleID)
+            
+            if !isDeleted {
+                self.eventHandler(.error(StorageError.failedDelete))
+                self.updateData()
+            }
+        }
     }
     
     // MARK: - Private

@@ -11,6 +11,7 @@ import Foundation
 enum StorageError: Error {
     
     case invalidFetch
+    case failedDelete
 }
 
 extension StorageError: LocalizedError {
@@ -19,6 +20,8 @@ extension StorageError: LocalizedError {
         switch self {
         case .invalidFetch:
             return NSLocalizedString("Unable to fetch data from storage.", comment: "invalidFetch")
+        case .failedDelete:
+                return NSLocalizedString("Unable to delete data from storage.", comment: "invalidFetch")
         }
     }
 }

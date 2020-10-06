@@ -38,10 +38,16 @@ class ListView: BaseView<ListViewModel> {
     override public func fill(with viewModel: ListViewModel) {
         super.fill(with: viewModel)
         
+        let isEditing = !viewModel.shouldCheckNetwork  //  when we work with storage table can be editing
+        
         self.tableAdapter?.eventHandler = { [weak viewModel] event in
             switch event {
             case .didSelect(let indexPath):
                 viewModel?.onSelect(indexPath: indexPath)
+            case .didRemove(let indexPath):
+                if isEditing {
+                    viewModel?.onRemove(indexPath: indexPath)
+                }
             default:
                 break
             }
@@ -49,9 +55,8 @@ class ListView: BaseView<ListViewModel> {
         
         viewModel.articles
             .observeOn(MainScheduler.asyncInstance)
-            .distinctUntilChanged()
             .bind { [weak self] models in
-                self?.tableAdapter?.sections = [Section(cell: ArticleCell.self, models: models)]
+                self?.tableAdapter?.sections = [Section(cell: ArticleCell.self, models: models, isEditing: isEditing)]
             }
             .disposed(by: self)
         

@@ -382,8 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				621A96E924ED527900FAC9F4 /* AppCoordinator.swift */,
-				62910F2B24EEC33A00C6ECE0 /* ArticleViewController */,
 				62A6FC4D24EE6E3F005CD79D /* ListViewController */,
+				62910F2B24EEC33A00C6ECE0 /* ArticleViewController */,
 			);
 			path = AppFlow;
 			sourceTree = "<group>";
